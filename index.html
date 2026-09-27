@@ -1,0 +1,476 @@
+<meta charset="utf-8">
+<title>바른통신 요금계산기</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800&display=swap">
+<style>
+:root{
+  --bg:#F2F4F5; --surface:#FFFFFF; --ink:#111820; --muted:#46525C; --line:#D5DCE1;
+  --accent:#0F6E66; --accent-ink:#FFFFFF; --accent-soft:#E2F1EF;
+  --gift:#9A4A00; --gift-soft:#FFF1E2; --warn:#8A5A00; --warn-soft:#FFF6D6; --bad:#B42318; --bad-soft:#FDECEA;
+  --sans:"Noto Sans KR",-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  --mono:var(--sans);
+  --kakao:#FEE500; --kakao-ink:#191600;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  color-scheme:dark;--bg:#10161B;--surface:#182129;--ink:#EEF2F5;--muted:#A9B6C0;--line:#2A3640;
+  --accent:#3FB8AC;--accent-ink:#06201D;--accent-soft:#16312F;--gift:#F2A860;--gift-soft:#33240F;
+  --warn:#E9C15A;--warn-soft:#30280F;--bad:#F2877D;--bad-soft:#3A1B18;}}
+:root[data-theme="dark"]{
+  color-scheme:dark;--bg:#10161B;--surface:#182129;--ink:#EEF2F5;--muted:#A9B6C0;--line:#2A3640;
+  --accent:#3FB8AC;--accent-ink:#06201D;--accent-soft:#16312F;--gift:#F2A860;--gift-soft:#33240F;
+  --warn:#E9C15A;--warn-soft:#30280F;--bad:#F2877D;--bad-soft:#3A1B18;}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+.grid>*,.plan>*{min-width:0}
+.plan .nm{overflow-wrap:anywhere}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.6;letter-spacing:-.01em;word-break:keep-all;font-variant-numeric:tabular-nums;padding-inline:16px;padding-block:0 120px}
+.wrap{max-width:1080px;margin:0 auto}
+header{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 12px;padding-block:18px 12px}
+.brand{display:flex;flex-direction:column;gap:2px}
+h1{font-size:22px;font-weight:800;margin:0;letter-spacing:-.03em;line-height:1.3;text-wrap:balance}
+h1 .co{color:var(--accent)}
+.basis{font-size:13px;color:var(--muted)}
+.kakao{display:inline-flex;align-items:center;gap:5px;background:var(--kakao);color:var(--kakao-ink);text-decoration:none;font-size:13px;font-weight:700;padding:6px 11px;border-radius:999px;white-space:nowrap}
+.kakao svg{width:15px;height:15px}
+.kakao:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+footer.sign{margin-top:20px;padding:14px 16px;border:1px solid var(--line);border-radius:10px;background:var(--surface);font-size:14px;line-height:1.7}
+footer.sign b{font-weight:700}
+.tabs{display:flex;gap:6px;margin-bottom:14px}
+.tabs button{flex:0 0 auto}
+.grid{display:grid;grid-template-columns:1fr;gap:16px}
+@media(min-width:900px){.grid{grid-template-columns:1fr 420px;align-items:start}.result{position:sticky;top:12px}body{padding-bottom:100px}}
+section.card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px;display:flex;flex-direction:column;gap:12px}
+.step{display:flex;flex-direction:column;gap:8px}
+.step>label,.lbl{font-size:14px;font-weight:700;color:var(--ink)}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+button{font:inherit;color:inherit}
+.chip{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:8px 14px;cursor:pointer;font-size:15px}
+.chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink);font-weight:700}
+.chip:disabled{opacity:.4;cursor:not-allowed}
+.chip:focus-visible,.plan:focus-visible,.btn:focus-visible,select:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.plans{display:flex;flex-direction:column;gap:6px}
+.plan{text-align:left;border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:10px 12px;cursor:pointer;display:grid;grid-template-columns:1fr auto;gap:2px 10px}
+.plan[aria-pressed="true"]{border-color:var(--accent);background:var(--accent-soft);box-shadow:inset 0 0 0 1px var(--accent)}
+.plan .nm{font-size:15px;font-weight:500;line-height:1.45}
+.plan .pr{font-size:16px;font-weight:700;text-align:right;white-space:nowrap}
+.plan .sub{font-size:13px;color:var(--muted)}
+.plan .gf{font-size:13px;font-weight:500;color:var(--gift);text-align:right;white-space:nowrap}
+.plan.blocked .nm{text-decoration:line-through}
+.tag{display:inline-block;font-size:11px;padding:1px 6px;border-radius:4px;margin-left:4px;vertical-align:1px;font-weight:600}
+.tag.bad{background:var(--bad-soft);color:var(--bad)} .tag.warn{background:var(--warn-soft);color:var(--warn)}
+select,input[type=text]{font:inherit;width:100%;padding:9px 10px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink)}
+.line{display:grid;grid-template-columns:1fr auto;gap:6px;align-items:center}
+.btn{border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:9px 14px;cursor:pointer;font-weight:500}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink);font-weight:600}
+.btn.small{padding:6px 10px;font-size:14px}
+.note{font-size:13px;color:var(--muted);margin:0}
+.result h2{font-size:18px;font-weight:800;margin:0}
+table.bd{width:100%;border-collapse:collapse;font-size:15px;font-variant-numeric:tabular-nums}
+table.bd td{padding:7px 0;border-bottom:1px solid var(--line);vertical-align:top}
+table.bd td.v{text-align:right;font-weight:500;white-space:nowrap;padding-left:10px}
+table.bd tr.sum td{font-weight:800;font-size:18px;border-bottom:2px solid var(--ink)}
+table.bd tr.minus td.v{color:var(--accent)}
+table.bd tr.sec td{font-size:13px;color:var(--muted);font-weight:700;padding-top:16px}
+table.bd tr.giftsum td{color:var(--gift);font-weight:800;font-size:18px;border-bottom:none}
+.alert{border-radius:8px;padding:10px 12px;font-size:14px}
+.alert.bad{background:var(--bad-soft);color:var(--bad)} .alert.warn{background:var(--warn-soft);color:var(--warn)}
+textarea{width:100%;min-height:340px;font:15px/1.65 var(--sans);padding:10px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);resize:vertical}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.bar{position:fixed;left:0;right:0;bottom:0;z-index:5;background:var(--surface);border-top:1px solid var(--line);padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;justify-content:space-between}
+.bar .sums{display:flex;gap:20px}
+.bar .acts{display:flex;gap:6px}
+.bar .acts .btn{white-space:nowrap}
+.btn.kakao-btn{background:var(--kakao);border-color:var(--kakao);color:var(--kakao-ink);font-weight:700;text-decoration:none;display:inline-flex;align-items:center;gap:4px}
+.btn.kakao-btn svg{width:16px;height:16px}
+.btn.consult-btn{background:var(--ink);border-color:var(--ink);color:var(--bg);font-weight:700}
+@media(max-width:599px){.bar .acts{width:100%}.bar .acts .btn{flex:1;padding-inline:6px;justify-content:center;text-align:center}body{padding-bottom:150px}}
+.modal{position:fixed;inset:0;z-index:20;background:rgba(10,15,20,.55);display:flex;align-items:flex-end;justify-content:center}
+@media(min-width:600px){.modal{align-items:center;padding:16px}}
+.sheet{background:var(--surface);color:var(--ink);width:100%;max-width:480px;max-height:92vh;overflow-y:auto;border-radius:14px 14px 0 0;padding:18px 16px calc(16px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;gap:12px}
+@media(min-width:600px){.sheet{border-radius:14px}}
+.sheet h2{font-size:19px;font-weight:800;margin:0}
+.sheet .fld{display:flex;flex-direction:column;gap:5px}
+.sheet .fld>label{font-size:14px;font-weight:700}
+.sheet .req{color:var(--bad)}
+.sheet input[type=tel]{font:inherit;width:100%;padding:9px 10px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink)}
+.sheet .agree{display:flex;gap:8px;align-items:flex-start;font-size:14px}
+.sheet .agree input{margin-top:5px;width:18px;height:18px;flex:0 0 auto}
+.sheet .policy{font-size:12.5px;color:var(--muted);background:var(--bg);border-radius:8px;padding:8px 10px;margin:0}
+.sheet .quote-box{font-size:13px;color:var(--muted);background:var(--accent-soft);border-radius:8px;padding:8px 10px;margin:0;white-space:pre-line}
+.sheet .err{color:var(--bad);font-size:14px;margin:0}
+.sheet .acts{display:flex;gap:8px}
+.sheet .acts .btn{flex:1}
+.sheet .done{text-align:center;padding:10px 0;display:flex;flex-direction:column;gap:10px;align-items:center}
+.sheet .done b{font-size:18px}
+.bar .k{font-size:12px;color:var(--muted)} .bar .n{font-weight:800;font-size:19px}
+.bar .g .n{color:var(--gift)}
+.toast{position:fixed;z-index:30;left:50%;transform:translateX(-50%);bottom:150px;background:var(--ink);color:var(--bg);padding:8px 14px;border-radius:8px;font-size:14px}
+.ratetable{overflow-x:auto}
+.ratetable table{border-collapse:collapse;font-size:14px;font-variant-numeric:tabular-nums;min-width:720px;width:100%}
+.ratetable th,.ratetable td{border-bottom:1px solid var(--line);padding:6px 8px;text-align:right;white-space:nowrap}
+.ratetable th:first-child,.ratetable td:first-child,.ratetable th:nth-child(2),.ratetable td:nth-child(2){text-align:left}
+.ratetable td:nth-child(2){white-space:normal;min-width:260px}
+.ratetable h3{font-size:16px;margin:18px 0 6px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<div class="wrap">
+  <header>
+    <div class="brand">
+      <h1><span class="co">바른통신</span> 인터넷·TV 요금계산기</h1>
+      <span class="basis" id="basis"></span>
+    </div>
+    <a class="kakao" href="https://open.kakao.com/o/s3YS0C6f" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3C6.5 3 2 6.6 2 11c0 2.8 1.9 5.3 4.7 6.7l-1 3.6c-.1.4.3.7.6.5l4.3-2.8c.5.1.9.1 1.4.1 5.5 0 10-3.6 10-8S17.5 3 12 3z"/></svg>카톡 문의하기</a>
+  </header>
+  <div class="tabs" role="tablist">
+    <button class="chip" id="tab-calc" aria-pressed="true">견적 계산</button>
+    <button class="chip" id="tab-rates" aria-pressed="false">요금표 확인</button>
+  </div>
+
+  <div id="view-calc" class="grid">
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <section class="card">
+        <div class="step"><label>통신사</label><div class="chips" id="carriers"></div></div>
+        <div class="step"><label>상품</label><div class="chips" id="types"></div></div>
+        <div class="step" id="tvcount-step"><label>TV 대수</label><div class="chips" id="tvcounts"></div></div>
+        <div class="step" id="speed-step"><label>인터넷 속도</label><div class="chips" id="speeds"></div></div>
+        <div class="step"><label>요금제 <span style="font-weight:400">(3년 약정, 부가세 포함 월요금)</span></label><div class="plans" id="plans"></div></div>
+      </section>
+      <section class="card">
+        <div class="step"><label>휴대폰 결합</label><div class="chips" id="bundles"></div>
+          <p class="note" id="bundle-note"></p></div>
+        <div class="step" id="usim-step" hidden>
+          <label>유심 이동 회선 (선택약정 25%, 1년 약정)</label>
+          <div id="usim-lines" style="display:flex;flex-direction:column;gap:6px"></div>
+          <div><button class="btn small" id="add-line">+ 회선 추가</button></div>
+        </div>
+        <div class="step" id="offhour-step"><label id="offhour-label">설치 시간</label><div class="chips" id="offhours"></div></div>
+      </section>
+      <section class="card">
+        <div class="step"><label for="cust">고객명 (메시지에 표시)</label><input type="text" id="cust" placeholder="예: 홍길동"></div>
+      </section>
+    </div>
+
+    <section class="card result" id="result">
+      <h2 id="r-title">견적</h2>
+      <div id="r-alerts" style="display:flex;flex-direction:column;gap:6px"></div>
+      <table class="bd" id="r-table"></table>
+      <div class="step">
+        <span class="lbl">고객 발송 메시지</span>
+        <textarea id="msg" readonly></textarea>
+        <div class="row"><button class="btn primary" id="copy">메시지 복사</button><span class="note">복사 후 카카오톡·문자에 붙여넣기</span></div>
+      </div>
+    </section>
+  </div>
+
+  <div id="view-rates" hidden>
+    <section class="card"><p class="note" id="rates-note"></p><div id="rates" class="ratetable"></div></section>
+  </div>
+  <footer class="sign"><b>바른통신</b><br>대표 고객센터 : 031-8028-3085<br>김대현 과장 010-8886-6447 · 이호석 과장 010-7397-0904</footer>
+</div>
+
+<div class="bar" id="bar">
+  <div class="sums">
+    <div><div class="k">월 합계</div><div class="n" id="bar-m">-</div></div>
+    <div class="g"><div class="k">사은품</div><div class="n" id="bar-g">-</div></div>
+  </div>
+  <div class="acts">
+    <button class="btn primary" id="bar-copy">메시지 복사</button>
+    <a class="btn kakao-btn" id="bar-kakao" href="https://open.kakao.com/o/s3YS0C6f" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3C6.5 3 2 6.6 2 11c0 2.8 1.9 5.3 4.7 6.7l-1 3.6c-.1.4.3.7.6.5l4.3-2.8c.5.1.9.1 1.4.1 5.5 0 10-3.6 10-8S17.5 3 12 3z"/></svg>카톡</a>
+    <button class="btn consult-btn" id="bar-consult">상담신청</button>
+  </div>
+</div>
+
+<div class="modal" id="consult" role="dialog" aria-modal="true" aria-labelledby="consult-title" hidden>
+  <form class="sheet" id="consult-form" novalidate>
+    <h2 id="consult-title">상담 신청</h2>
+    <p class="note">남겨주시면 바른통신 상담원이 연락드립니다.</p>
+    <div class="fld"><label for="c-name">고객 성함 <span class="req">*</span></label><input type="text" id="c-name" autocomplete="name" maxlength="20" placeholder="홍길동"></div>
+    <div class="fld"><label for="c-phone">연락처 <span class="req">*</span></label><input type="tel" id="c-phone" autocomplete="tel" inputmode="numeric" maxlength="13" placeholder="010-1234-5678"></div>
+    <div class="fld"><label for="c-region">지역 <span class="req">*</span></label><input type="text" id="c-region" maxlength="30" placeholder="예: 경기 남양주시 다산동"></div>
+    <div class="fld"><label for="c-mobile">기존 모바일 통신사 <span class="req">*</span></label>
+      <select id="c-mobile"><option value="">선택하세요</option><option>SKT</option><option>KT</option><option>LG U+</option><option>알뜰폰</option><option>모름</option></select></div>
+    <div class="fld"><label for="c-isp">현재 인터넷 통신사 <span class="req">*</span></label>
+      <select id="c-isp"><option value="">선택하세요</option><option>KT</option><option>SK브로드밴드</option><option>LG U+</option><option>LG헬로비전</option><option>KT스카이라이프</option><option>SK B tv pop</option><option>기타 (지역 케이블 등)</option><option>없음 (신규 가입)</option></select></div>
+    <div class="fld"><label for="c-contract">인터넷 약정 만료 여부 <span class="req">*</span></label>
+      <select id="c-contract"><option value="">선택하세요</option><option>만료됨</option><option>만료 전 (위약금 있음)</option><option>곧 만료 (3개월 이내)</option><option>모름</option><option>해당 없음 (신규 가입)</option></select></div>
+    <p class="quote-box" id="c-quote" hidden></p>
+    <p class="policy">수집 항목: 성함, 연락처, 지역, 통신 이용 정보 · 이용 목적: 인터넷·TV·휴대폰 가입 상담 · 보유 기간: 상담 완료 후 지체 없이 파기</p>
+    <label class="agree"><input type="checkbox" id="c-agree"><span>개인정보 수집·이용에 동의합니다. <span class="req">(필수)</span></span></label>
+    <p class="err" id="c-err" hidden></p>
+    <div class="acts"><button type="button" class="btn" id="c-cancel">닫기</button><button type="submit" class="btn primary" id="c-submit">상담 신청하기</button></div>
+  </form>
+</div>
+<div class="toast" id="toast" hidden></div>
+
+<script src="config.js"></script>
+<script src="data.js"></script>
+<script src="calc.js"></script>
+<script>
+(function(){
+  var D = window.RATE_DATA, C = window.RateCalc, won = C.won;
+  var $ = function(id){ return document.getElementById(id); };
+  var S = { carrier:'KT', type:'tv', tvCount:1, speed:null, plan:null, bundle:'phone', usimLines:[], offhour:false, installOption:0 };
+  var SPEED_ORDER=['100M','160M','200M','500M','1G'];
+  function store(k,v){ try{ if(v===undefined) return localStorage.getItem(k); localStorage.setItem(k,v);}catch(e){ return null; } }
+
+  $('basis').textContent = '요금 기준일 ' + D.basisDate;
+
+  function chips(el, items, cur, onPick){
+    el.innerHTML='';
+    items.forEach(function(it){
+      var b=document.createElement('button'); b.type='button'; b.className='chip';
+      b.textContent=it.label; b.setAttribute('aria-pressed', String(it.value===cur));
+      if(it.disabled){ b.disabled=true; b.title=it.disabled; }
+      b.onclick=function(){ onPick(it.value); };
+      el.appendChild(b);
+    });
+  }
+  function carrier(){ return C.findCarrier(D,S.carrier); }
+  function plans(){ return C.plansFor(D,S.carrier,S.type,S.tvCount); }
+  function speeds(){ var s={}; plans().forEach(function(p){s[p.speed]=1;}); return SPEED_ORDER.filter(function(x){return s[x];}).concat(Object.keys(s).filter(function(x){return SPEED_ORDER.indexOf(x)<0;})); }
+  var SHOP_SIGN='대표 고객센터 : 031-8028-3085\n바른통신 김대현과장 010-8886-6447 , 이호석과장 010-7397-0904';
+  var HOME_LABEL={internet:'인터넷',tv:'인터넷+TV',tvonly:'TV'};
+  function extraFor(c,p){ var ex=c.mobileCombine&&c.mobileCombine.internetOnlyExtra; return (ex&&S.type==='internet'&&ex.speeds.indexOf(p.speed)>=0)?ex.amount:0; }
+  function baseInstall(c,p){ if(p&&typeof p.install==='number') return p.install; var ci=c.install; return S.type==='internet'?ci.installFeeInternet:(S.tvCount>=2?ci.installFeeTv2:ci.installFeeTv1); }
+  function hasUsim(){ return C.usimPlansFor(D,S.carrier).length>0; }
+
+  function normalize(){
+    var c=carrier();
+    if(S.type==='internet' && !c.internet.length) S.type='tv';
+    if(S.type==='tvonly' && !(c.tvOnly&&c.tvOnly.length)) S.type='tv';
+    var sp=speeds(); if(sp.indexOf(S.speed)<0) S.speed=sp.indexOf('500M')>=0?'500M':sp[0];
+    var list=plans().filter(function(p){return p.speed===S.speed;});
+    if(!list.some(function(p){return p.code===S.plan;})) S.plan=list.length?list[0].code:null;
+    var p=list.filter(function(x){return x.code===S.plan;})[0];
+    if(S.bundle!=='none' && !(p && p.bundleFee)) S.bundle='none';
+    if(S.bundle==='usim' && !hasUsim()) S.bundle='phone';
+    if(S.bundle==='usim'){
+      var codes=C.usimPlansFor(D,S.carrier).map(function(u){return u.code;});
+      S.usimLines=S.usimLines.map(function(x){return codes.indexOf(x)>=0?x:'';});
+      if(!S.usimLines.length) S.usimLines=[''];
+    }
+  }
+
+  function render(){
+    normalize();
+    var c=carrier();
+    chips($('carriers'), D.carriers.map(function(x){return {label:x.label,value:x.key};}), S.carrier, function(v){S.carrier=v;S.usimLines=[];render();});
+    chips($('types'), [
+      {label:'인터넷 단독',value:'internet',disabled:c.internet.length?null:'이 통신사는 인터넷 단독 요금 정보가 없습니다'},
+      {label:'인터넷+TV',value:'tv'},
+      {label:'TV 단독',value:'tvonly',disabled:(c.tvOnly&&c.tvOnly.length)?null:'이 통신사는 TV 단독 요금 정보가 없습니다'}], S.type, function(v){S.type=v;render();});
+    $('tvcount-step').hidden = S.type!=='tv';
+    chips($('tvcounts'), [1,2,3].map(function(n){return {label:n+'대',value:n};}), S.tvCount, function(v){S.tvCount=v;render();});
+    $('speed-step').hidden = S.type==='tvonly';
+    chips($('speeds'), speeds().map(function(s){return {label:s,value:s};}), S.speed, function(v){S.speed=v;render();});
+
+    var pl=$('plans'); pl.innerHTML='';
+    plans().filter(function(p){return p.speed===S.speed;}).forEach(function(p){
+      var b=document.createElement('button'); b.type='button'; b.className='plan'+(p.blocked?' blocked':'');
+      b.setAttribute('aria-pressed',String(p.code===S.plan));
+      var gift=p.gift+p.secret+p.extraSetTop;
+      b.innerHTML='<span class="nm"></span><span class="pr"></span><span class="sub"></span><span class="gf"></span>';
+      b.children[0].textContent=p.name;
+      if(p.blocked) b.children[0].insertAdjacentHTML('beforeend','<span class="tag bad">확인 필요·견적 불가</span>');
+      else if(p.check) b.children[0].insertAdjacentHTML('beforeend','<span class="tag warn">확인 필요</span>');
+      b.children[1].textContent=won(p.fee+(p.rental||0));
+      b.children[2].textContent=(p.rental?'셋톱 임대료 '+won(p.rental)+' 포함 · ':'')+(p.bundleFee?'휴대폰 결합 시 '+won(p.bundleFee-extraFor(c,p)+(p.rental||0)):'결합할인 없음');
+      b.children[3].textContent=p.gift===null?'사은품 공란':'사은품 '+won(gift);
+      b.onclick=function(){S.plan=p.code;render();};
+      pl.appendChild(b);
+    });
+
+    var p=plans().filter(function(x){return x.code===S.plan;})[0];
+    var canBundle=!!(p&&p.bundleFee);
+    chips($('bundles'), [
+      {label:'결합 안 함',value:'none'},
+      {label:'기존 휴대폰 결합',value:'phone',disabled:canBundle?null:'결합할인 정보 없음'},
+      {label:'유심 이동 결합',value:'usim',disabled:(canBundle&&hasUsim())?null:'유심 요금제 정보 없음'}
+    ], S.bundle, function(v){S.bundle=v;render();});
+    $('bundle-note').textContent = !canBundle ? c.label+' 이 상품은 휴대폰 결합할인 정보가 없습니다.'
+      : S.bundle==='phone' ? '고객이 이미 '+c.label+' 휴대폰을 쓰는 경우. 결합할인만 적용됩니다.'
+      : S.bundle==='usim' ? c.label+' 유심으로 번호이동하면서 결합. 유심 지원금이 추가됩니다.' : '';
+
+    $('usim-step').hidden = S.bundle!=='usim';
+    var ul=$('usim-lines'); ul.innerHTML='';
+    if(S.bundle==='usim'){
+      var ups=C.usimPlansFor(D,S.carrier);
+      S.usimLines.forEach(function(code,i){
+        var row=document.createElement('div'); row.className='line';
+        var sel=document.createElement('select'); sel.id='usim-'+i;
+        sel.innerHTML='<option value="">'+(i+1)+'번 회선 요금제 선택</option>'+ups.map(function(u){
+          return '<option value="'+u.code+'">'+u.name+' ('+u.data+') '+won(u.fee)+'</option>';}).join('');
+        sel.value=code; sel.onchange=function(){S.usimLines[i]=sel.value;render();};
+        row.appendChild(sel);
+        if(S.usimLines.length>1){ var x=document.createElement('button'); x.className='btn small'; x.textContent='삭제';
+          x.onclick=function(){S.usimLines.splice(i,1);render();}; row.appendChild(x); }
+        ul.appendChild(row);
+      });
+    }
+    var ci=c.install, base=baseInstall(c,p);
+    if(p&&p.installOptions){
+      if(!p.installOptions[S.installOption]) S.installOption=0;
+      S.offhour=false; $('offhour-step').hidden=false; $('offhour-label').textContent='설치 방식';
+      chips($('offhours'), p.installOptions.map(function(o,i){return {label:o.label+' '+won(o.fee),value:i};}), S.installOption, function(v){S.installOption=v;render();});
+    } else {
+    $('offhour-label').textContent='설치 시간';
+    if(base===0) S.offhour=false;
+    $('offhour-step').hidden = base===0;
+    chips($('offhours'), [
+      {label:'평일 주간 '+won(base),value:false},
+      {label:'야간·주말 '+won(Math.round(base*ci.offhourRate)),value:true}], S.offhour, function(v){S.offhour=v;render();});
+    }
+
+    renderResult();
+  }
+
+  function row(t,label,val,cls){ var tr=t.insertRow(); if(cls) tr.className=cls;
+    var a=tr.insertCell(), b=tr.insertCell(); a.textContent=label; b.textContent=val; b.className='v'; if(cls==='sec'){ a.colSpan=2; tr.deleteCell(1);} }
+
+  var lastMsg='', lastSummary='';
+  function renderResult(){
+    var q=C.quote(D,{carrier:S.carrier,type:S.type,tvCount:S.tvCount,plan:S.plan,bundle:S.bundle,
+      usimLines:S.usimLines.filter(function(x){return x!==undefined;}),offhour:S.offhour,installOption:S.installOption});
+    var al=$('r-alerts'); al.innerHTML='';
+    (q.errors||[]).forEach(function(e){ var d=document.createElement('div'); d.className='alert bad'; d.textContent=e; al.appendChild(d); });
+    (q.warnings||[]).forEach(function(e){ var d=document.createElement('div'); d.className='alert warn'; d.textContent=e+' — 발송 전 요금을 확인하세요.'; al.appendChild(d); });
+    var t=$('r-table'); t.innerHTML='';
+    if(q.errors&&q.errors.length){ $('msg').value=''; lastMsg=''; lastSummary=''; $('bar-m').textContent='-'; $('bar-g').textContent='-'; $('r-title').textContent='견적'; return; }
+    $('r-title').textContent=q.carrier.label+' '+HOME_LABEL[q.type]+(q.tvCount>1?' '+q.tvCount+'대':'')+(q.usimLines.length?'+유심':'');
+    row(t,'월 요금','','sec');
+    row(t,HOME_LABEL[q.type]+' '+(q.homeBundleDiscount?'정상가':'월 요금'),won(q.homeFee));
+    if(q.rental) row(t,'셋톱박스 임대료',won(q.rental));
+    if(q.homeBundleDiscount) row(t,'휴대폰 결합할인','-'+won(q.homeBundleDiscount),'minus');
+    q.usimLines.forEach(function(l,i){
+      row(t,'유심'+(q.usimLines.length>1?' '+(i+1):'')+' '+l.name,won(l.fee));
+      row(t,'선택약정 25%','-'+won(l.discount),'minus');
+      if(l.premiumDiscount) row(t,q.premiumSingle.name+' 25%','-'+won(l.premiumDiscount),'minus');
+      if(l.combineDiscount) row(t,q.combine.name,'-'+won(l.combineDiscount),'minus');
+    });
+    if(q.combine&&q.combine.household) row(t,q.combine.name+' 휴대폰 할인 (합계 '+won(q.combine.mobileTotal)+')','-'+won(q.combine.household),'minus');
+    if(q.combine||q.premiumSingle) row(t,'적용 결합: '+(q.premiumSingle?q.premiumSingle.name:q.combine.name),'');
+    row(t,'월 합계',won(q.monthlyTotal),'sum');
+    row(t,'1회 비용','','sec');
+    row(t,'설치비'+(q.installLabel?' ('+q.installLabel+')':'')+(q.installOffhour?' (야간·주말 ×'+q.carrier.install.offhourRate+')':''),q.installFinal===0?'무료':won(q.installFinal));
+    if(q.giftBlank){ row(t,'사은품','','sec'); row(t,'사은품','공란 (메시지에 표시 안 함)'); }
+    else if(q.giftItems.length){
+      row(t,'사은품','','sec');
+      q.giftItems.forEach(function(g){ row(t,g.label,won(g.amount)); });
+      row(t,'사은품 합계',won(q.giftTotal),'giftsum');
+    }
+    lastMsg=C.buildMessage(q,{customer:$('cust').value.trim(),shop:SHOP_SIGN});
+    lastSummary=$('r-title').textContent+' / '+q.plan.name+' / 월 합계 '+won(q.monthlyTotal)+(q.giftBlank?'':' / 사은품 '+won(q.giftTotal));
+    $('msg').value=lastMsg;
+    $('bar-m').textContent=won(q.monthlyTotal); $('bar-g').textContent=q.giftBlank?'공란':won(q.giftTotal);
+  }
+
+  function toast(s){ var el=$('toast'); el.textContent=s; el.hidden=false; clearTimeout(toast.t); toast.t=setTimeout(function(){el.hidden=true;},1800); }
+  function copy(){
+    if(!lastMsg){ toast('견적 오류를 먼저 해결하세요'); return; }
+    var ta=$('msg');
+    var fallback=function(){ ta.removeAttribute('readonly'); ta.focus(); ta.select(); try{document.execCommand('copy'); toast('복사했습니다');}catch(e){toast('메시지를 길게 눌러 복사하세요');} ta.setAttribute('readonly',''); };
+    if(navigator.clipboard&&navigator.clipboard.writeText) navigator.clipboard.writeText(lastMsg).then(function(){toast('복사했습니다');},fallback); else fallback();
+  }
+  $('copy').onclick=copy; $('bar-copy').onclick=copy;
+
+  // 상담 신청 -> 텔레그램 봇 (토큰·채팅방은 config.js)
+  var CFG=window.CONSULT_CONFIG||{};
+  var consultForm=$('consult-form');
+  function consultErr(m){ var e=$('c-err'); e.textContent=m; e.hidden=false; }
+  function setDone(done){
+    [].forEach.call(consultForm.querySelectorAll('.fld,.agree,.acts,.policy,.note'),function(e){ e.hidden=done; });
+    $('c-quote').hidden=done||!lastSummary;
+    var d=consultForm.querySelector('.done'); if(d) d.remove();
+  }
+  function openConsult(){
+    $('c-err').hidden=true; setDone(false);
+    $('c-quote').textContent=lastSummary?'함께 전달되는 견적: '+lastSummary:'';
+    $('c-submit').disabled=false; $('c-submit').textContent='상담 신청하기';
+    $('consult').hidden=false; setTimeout(function(){ $('c-name').focus(); },50);
+  }
+  function closeConsult(){ $('consult').hidden=true; $('bar-consult').focus(); }
+  function fmtPhone(v){
+    var d=v.replace(/\D/g,'').slice(0,11);
+    if(d.indexOf('02')===0) return d.length>9?d.replace(/^(02)(\d{4})(\d{4})$/,'$1-$2-$3'):d.replace(/^(02)(\d{0,3})(\d{0,4})$/,'$1-$2-$3').replace(/-+$/,'');
+    return d.length>10?d.replace(/^(\d{3})(\d{4})(\d{4})$/,'$1-$2-$3'):d.replace(/^(\d{3})(\d{0,3})(\d{0,4})$/,'$1-$2-$3').replace(/-+$/,'');
+  }
+  $('c-phone').addEventListener('input',function(){ this.value=fmtPhone(this.value); });
+  $('bar-consult').onclick=openConsult; $('c-cancel').onclick=closeConsult;
+  $('consult').addEventListener('click',function(e){ if(e.target===this) closeConsult(); });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&!$('consult').hidden) closeConsult(); });
+  consultForm.addEventListener('submit',function(e){
+    e.preventDefault(); $('c-err').hidden=true;
+    var v={name:$('c-name').value.trim(),phone:$('c-phone').value.replace(/\D/g,''),region:$('c-region').value.trim(),
+      mobile:$('c-mobile').value,isp:$('c-isp').value,contract:$('c-contract').value};
+    if(!v.name) return consultErr('고객 성함을 입력하세요.');
+    if(!/^0\d{8,10}$/.test(v.phone)) return consultErr('연락처를 정확히 입력하세요. (예: 010-1234-5678)');
+    if(!v.region) return consultErr('지역을 입력하세요.');
+    if(!v.mobile) return consultErr('기존 모바일 통신사를 선택하세요.');
+    if(!v.isp) return consultErr('현재 인터넷 통신사를 선택하세요.');
+    if(!v.contract) return consultErr('인터넷 약정 만료 여부를 선택하세요.');
+    if(!$('c-agree').checked) return consultErr('개인정보 수집·이용에 동의해야 신청할 수 있습니다.');
+    if(!CFG.token||!CFG.chatId) return consultErr('상담 접수 설정이 아직 안 되어 있습니다. 카톡 또는 031-8028-3085로 문의해 주세요.');
+    var now=new Date(), pad=function(n){ return (n<10?'0':'')+n; };
+    var text=['[바른통신 상담 신청]','고객 성함: '+v.name,'연락처: '+fmtPhone(v.phone),'지역: '+v.region,
+      '기존 모바일: '+v.mobile,'인터넷 통신사: '+v.isp,'약정 만료 여부: '+v.contract,'',
+      '보고 있던 견적: '+(lastSummary||'없음'),
+      '접수 시각: '+now.getFullYear()+'-'+pad(now.getMonth()+1)+'-'+pad(now.getDate())+' '+pad(now.getHours())+':'+pad(now.getMinutes())].join('\n');
+    var btn=$('c-submit'); btn.disabled=true; btn.textContent='보내는 중…';
+    var body=new URLSearchParams(); body.append('chat_id',CFG.chatId); body.append('text',text);
+    fetch('https://api.telegram.org/bot'+CFG.token+'/sendMessage',{method:'POST',body:body})
+      .then(function(r){ return r.json(); })
+      .then(function(j){
+        if(!j||!j.ok) throw new Error('send failed');
+        setDone(true);
+        var d=document.createElement('div'); d.className='done';
+        d.innerHTML='<b>상담 신청이 접수되었습니다</b><span class="note">곧 연락드리겠습니다. 급하시면 031-8028-3085로 전화 주세요.</span>';
+        var ok=document.createElement('button'); ok.type='button'; ok.className='btn primary'; ok.textContent='확인';
+        ok.onclick=function(){ consultForm.reset(); closeConsult(); };
+        d.appendChild(ok); consultForm.appendChild(d); ok.focus();
+      })
+      .catch(function(){
+        btn.disabled=false; btn.textContent='상담 신청하기';
+        consultErr('접수에 실패했습니다. 잠시 후 다시 시도하시거나 카톡 또는 031-8028-3085로 문의해 주세요.');
+      });
+  });
+  $('add-line').onclick=function(){ S.usimLines.push(''); render(); };
+  $('cust').oninput=renderResult;
+
+  function tab(which){
+    $('tab-calc').setAttribute('aria-pressed',String(which==='calc')); $('tab-rates').setAttribute('aria-pressed',String(which==='rates'));
+    $('view-calc').hidden=which!=='calc'; $('view-rates').hidden=which!=='rates'; $('bar').hidden=which!=='calc';
+  }
+  $('tab-calc').onclick=function(){tab('calc');}; $('tab-rates').onclick=function(){tab('rates');};
+
+  // 요금표 전체 보기 (검수용)
+  (function(){
+    $('rates-note').textContent='출처: '+D.source+' · 기준일 '+D.basisDate+' · 금액은 부가세 포함 월요금(3년 약정). 사은품 = 지원금 + 추가지원금 + 추가셋톱.';
+    var h='';
+    function tbl(title,list){
+      h+='<h3>'+title+'</h3><table><tr><th>속도</th><th>상품명</th><th>정상가</th><th>결합가</th><th>결합할인</th><th>사은품</th></tr>';
+      list.forEach(function(p){
+        var flag=p.blocked?' <span class="tag bad">견적 불가</span>':p.check?' <span class="tag warn">확인 필요</span>':'';
+        h+='<tr><td>'+p.speed+'</td><td>'+p.name+(p.rental?' (+셋톱 임대료 '+won(p.rental)+')':'')+flag+'</td><td>'+won(p.fee)+'</td><td>'+(p.bundleFee?won(p.bundleFee):'-')+'</td><td>'+(p.bundleFee?won(p.fee-p.bundleFee):'-')+'</td><td>'+(p.gift===null?'공란':won(p.gift+p.secret+p.extraSetTop))+'</td></tr>';
+      });
+      h+='</table>';
+    }
+    D.carriers.forEach(function(c){
+      if(c.internet.length) tbl(c.label+' · 인터넷 단독',c.internet);
+      ['1','2','3'].forEach(function(n){ if(c.tv[n].length) tbl(c.label+' · 인터넷+TV '+n+'대',c.tv[n]); });
+      if(c.tvOnly&&c.tvOnly.length) tbl(c.label+' · TV 단독 (설치비 '+c.tvOnly[0].installOptions.map(function(o){return o.label+' '+won(o.fee);}).join(' / ')+')',c.tvOnly);
+      if(c.mobileCombine){ var m=c.mobileCombine, f=function(ts){return ts.map(function(x){return won(x[0])+'↑ -'+won(x[1]);}).join(', ');};
+        if(m.internetOnlyExtra) h+='<p class="note">인터넷 단독 '+m.internetOnlyExtra.speeds.join('/')+' + 휴대폰 결합(정액·총액) 시 인터넷 '+won(m.internetOnlyExtra.amount)+' 추가 할인 (위 표의 결합가에서 추가로 차감, 프리미엄 싱글결합 시 제외)</p>';
+        h+='<p class="note">휴대폰 결합: 월정액 합계 '+won(m.threshold)+' 미만 → '+m.jeongaek.name+' (회선별 '+f(m.jeongaek.tiers)+') / 이상 → '+m.chongaek.name+' (가구 합계, 500M·1G: '+f(m.chongaek.standard)+' · 100M: '+f(m.chongaek.slim)+')</p>'; }
+      if(c.premiumSingle) h+='<p class="note">'+c.premiumSingle.name+': 인터넷 '+c.premiumSingle.speeds.join('/')+' + 월정액 '+won(c.premiumSingle.minFee)+' 이상 휴대폰 1회선 결합 시 휴대폰 월정액 '+(c.premiumSingle.rate*100)+'% 추가 할인 (선택약정과 중복)</p>';
+      h+='<p class="note">설치비: 인터넷 '+won(c.install.installFeeInternet)+' · TV 1대 '+won(c.install.installFeeTv1)+' · TV 2대 이상 '+won(c.install.installFeeTv2)+' · 야간·주말 ×'+c.install.offhourRate+'</p>';
+    });
+    h+='<h3>유심 요금제 (선택약정 25% 적용가)</h3><table><tr><th>통신사</th><th>요금제</th><th>정상가</th><th>약정가</th><th>지원금(100M)</th><th>지원금(500M↑)</th></tr>';
+    D.usim.forEach(function(u){ h+='<tr><td>'+u.carrier+'</td><td>'+u.name+' ('+u.data+')</td><td>'+won(u.fee)+'</td><td>'+won(Math.round(u.fee*0.75))+'</td><td>'+won(u.gift100)+'</td><td>'+won(u.gift500)+'</td></tr>'; });
+    h+='</table>';
+    $('rates').innerHTML=h;
+  })();
+
+  render();
+})();
+</script>
