@@ -226,7 +226,7 @@ textarea{width:100%;min-height:340px;font:15px/1.65 var(--sans);padding:10px;bor
   var SPEED_ORDER=['100M','160M','200M','500M','1G'];
   function store(k,v){ try{ if(v===undefined) return localStorage.getItem(k); localStorage.setItem(k,v);}catch(e){ return null; } }
 
-  $('basis').textContent = '요금 기준일 ' + D.basisDate;
+  $('basis').textContent = '요금 기준일 ' + C.todayKST();
 
   function chips(el, items, cur, onPick){
     el.innerHTML='';
@@ -342,6 +342,7 @@ textarea{width:100%;min-height:340px;font:15px/1.65 var(--sans);padding:10px;bor
 
   var lastMsg='', lastSummary='';
   function renderResult(){
+    $('basis').textContent='요금 기준일 '+C.todayKST();
     var q=C.quote(D,{carrier:S.carrier,type:S.type,tvCount:S.tvCount,plan:S.plan,bundle:S.bundle,
       usimLines:S.usimLines.filter(function(x){return x!==undefined;}),offhour:S.offhour,installOption:S.installOption});
     var al=$('r-alerts'); al.innerHTML='';
@@ -457,7 +458,7 @@ textarea{width:100%;min-height:340px;font:15px/1.65 var(--sans);padding:10px;bor
 
   // 요금표 전체 보기 (검수용)
   (function(){
-    $('rates-note').textContent='출처: '+D.source+' · 기준일 '+D.basisDate+' · 금액은 부가세 포함 월요금(3년 약정). 사은품 = 지원금 + 추가지원금 + 추가셋톱.';
+    $('rates-note').textContent='출처: '+D.source+' · 요금표 수집일 '+D.basisDate+' · 금액은 부가세 포함 월요금(3년 약정). 사은품 = 지원금 + 추가지원금 + 추가셋톱.';
     var h='';
     function tbl(title,list){
       h+='<h3>'+title+'</h3><table><tr><th>속도</th><th>상품명</th><th>정상가</th><th>결합가</th><th>결합할인</th><th>사은품</th></tr>';

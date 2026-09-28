@@ -7,6 +7,9 @@
 
   var HOME_LABEL = { internet: '인터넷', tv: '인터넷+TV', tvonly: 'TV' };
 
+  // 오늘 날짜 (한국 시간 기준, 기기 시간대와 무관) YYYY-MM-DD
+  function todayKST() { return new Date(Date.now() + 9 * 3600 * 1000).toISOString().slice(0, 10); }
+
   function won(n) { return Number(n).toLocaleString('ko-KR') + '원'; }
 
   // 구간표 [[기준금액, 할인액], ...] 에서 amount 이상인 가장 높은 구간의 할인액 (해당 없으면 0)
@@ -146,7 +149,7 @@
       install: inst, installOffhour: offhour, installFinal: instFinal, installLabel: installLabel,
       premiumSingle: premium, combine: combine,
       giftItems: giftItems, giftTotal: giftTotal,
-      basisDate: data.basisDate
+      basisDate: todayKST(), dataDate: data.basisDate
     };
   }
 
@@ -200,7 +203,7 @@
     return L.join('\n');
   }
 
-  var api = { quote: quote, buildMessage: buildMessage, plansFor: plansFor, usimPlansFor: usimPlansFor, findCarrier: findCarrier, won: won };
+  var api = { todayKST: todayKST, quote: quote, buildMessage: buildMessage, plansFor: plansFor, usimPlansFor: usimPlansFor, findCarrier: findCarrier, won: won };
   root.RateCalc = api;
   if (typeof module !== 'undefined') module.exports = api;
 })(typeof window !== 'undefined' ? window : this);
