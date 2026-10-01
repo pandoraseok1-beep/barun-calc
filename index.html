@@ -287,7 +287,7 @@ textarea{width:100%;min-height:340px;font:15px/1.65 var(--sans);padding:10px;bor
       if(p.blocked) b.children[0].insertAdjacentHTML('beforeend','<span class="tag bad">확인 필요·견적 불가</span>');
       else if(p.check) b.children[0].insertAdjacentHTML('beforeend','<span class="tag warn">확인 필요</span>');
       b.children[1].textContent=won(p.fee+(p.rental||0));
-      b.children[2].textContent=(p.rental?'셋톱 임대료 '+won(p.rental)+' 포함 · ':'')+(p.bundleFee?'휴대폰 결합 시 '+won(p.bundleFee-extraFor(c,p)+(p.rental||0)):'결합할인 없음');
+      b.children[2].textContent=(p.policy?p.policy+' · ':'')+(p.rental?'셋톱 임대료 '+won(p.rental)+' 포함 · ':'')+(p.bundleFee?'휴대폰 결합 시 '+won(p.bundleFee-extraFor(c,p)+(p.rental||0)):'결합할인 없음');
       b.children[3].textContent=p.gift===null?'사은품 공란':'사은품 '+won(gift);
       b.onclick=function(){S.plan=p.code;render();};
       pl.appendChild(b);
@@ -464,7 +464,7 @@ textarea{width:100%;min-height:340px;font:15px/1.65 var(--sans);padding:10px;bor
       h+='<h3>'+title+'</h3><table><tr><th>속도</th><th>상품명</th><th>정상가</th><th>결합가</th><th>결합할인</th><th>사은품</th></tr>';
       list.forEach(function(p){
         var flag=p.blocked?' <span class="tag bad">견적 불가</span>':p.check?' <span class="tag warn">확인 필요</span>':'';
-        h+='<tr><td>'+p.speed+'</td><td>'+p.name+(p.rental?' (+셋톱 임대료 '+won(p.rental)+')':'')+flag+'</td><td>'+won(p.fee)+'</td><td>'+(p.bundleFee?won(p.bundleFee):'-')+'</td><td>'+(p.bundleFee?won(p.fee-p.bundleFee):'-')+'</td><td>'+(p.gift===null?'공란':won(p.gift+p.secret+p.extraSetTop))+'</td></tr>';
+        h+='<tr><td>'+p.speed+'</td><td>'+p.name+(p.policy?' <span class="tag warn">'+p.policy+'</span>':'')+(p.rental?' (+셋톱 임대료 '+won(p.rental)+')':'')+flag+'</td><td>'+won(p.fee)+'</td><td>'+(p.bundleFee?won(p.bundleFee):'-')+'</td><td>'+(p.bundleFee?won(p.fee-p.bundleFee):'-')+'</td><td>'+(p.gift===null?'공란':won(p.gift+p.secret+p.extraSetTop))+'</td></tr>';
       });
       h+='</table>';
     }
