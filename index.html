@@ -176,11 +176,12 @@ textarea{width:100%;min-height:340px;font:15px/1.65 var(--sans);padding:10px;bor
       </section>
       <section class="card">
         <div class="step"><span class="lbl">영업자 정보 <span style="font-weight:400;color:var(--muted)">(이 기기에만 저장, 메시지 서명에 들어감)</span></span>
+          <div class="fld2"><label for="rep-shop">영업점명</label><input type="text" id="rep-shop" maxlength="20" placeholder="바른통신"></div>
           <div class="two">
             <div class="fld2"><label for="rep-name">영업자</label><input type="text" id="rep-name" maxlength="20" placeholder="예: 김대현 과장"></div>
             <div class="fld2"><label for="rep-phone">연락처</label><input type="text" id="rep-phone" inputmode="numeric" maxlength="13" placeholder="010-0000-0000"></div>
           </div>
-          <p class="note" id="rep-note">비워두면 기본 서명(김대현·이호석 과장)이 들어갑니다.</p></div>
+          <p class="note" id="rep-note">모두 비워두면 기본 서명(바른통신 김대현·이호석 과장)이 들어갑니다. 영업점명을 바꾸면 바른통신 대표 고객센터 번호는 서명에서 빠집니다.</p></div>
       </section>
     </div>
 
@@ -427,10 +428,15 @@ textarea{width:100%;min-height:340px;font:15px/1.65 var(--sans);padding:10px;bor
   function fmtTel(v){ var d=v.replace(/\D/g,'').slice(0,11);
     if(d.indexOf('02')===0) return d.length>9?d.replace(/^(02)(\d{4})(\d{4})$/,'$1-$2-$3'):d.replace(/^(02)(\d{0,3})(\d{0,4})$/,'$1-$2-$3').replace(/-+$/,'');
     return d.length>10?d.replace(/^(\d{3})(\d{4})(\d{4})$/,'$1-$2-$3'):d.replace(/^(\d{3})(\d{0,3})(\d{0,4})$/,'$1-$2-$3').replace(/-+$/,''); }
-  function rep(){ return {name:$('rep-name').value.trim(), phone:$('rep-phone').value.trim()}; }
-  function signature(){ var r=rep(); if(!r.name&&!r.phone) return SHOP_SIGN;
-    return '대표 고객센터 : 031-8028-3085\n바른통신 '+[r.name,r.phone].filter(Boolean).join(' '); }
-  $('rep-name').value=store('repName')||''; $('rep-phone').value=store('repPhone')||'';
+  function rep(){ return {shop:$('rep-shop').value.trim(), name:$('rep-name').value.trim(), phone:$('rep-phone').value.trim()}; }
+  function signature(){
+    var r=rep(), shop=r.shop||'바른통신', own=(shop==='바른통신');
+    if(own&&!r.name&&!r.phone) return SHOP_SIGN;
+    // 다른 영업점명이면 바른통신 대표 고객센터 번호는 넣지 않음
+    return (own?'대표 고객센터 : 031-8028-3085\n':'')+[shop,r.name,r.phone].filter(Boolean).join(' ');
+  }
+  $('rep-shop').value=store('repShop')||''; $('rep-name').value=store('repName')||''; $('rep-phone').value=store('repPhone')||'';
+  $('rep-shop').addEventListener('input',function(){ store('repShop',this.value); renderResult(); });
   $('rep-name').addEventListener('input',function(){ store('repName',this.value); renderResult(); });
   $('rep-phone').addEventListener('input',function(){ this.value=fmtTel(this.value); store('repPhone',this.value); renderResult(); });
 
@@ -488,7 +494,7 @@ textarea{width:100%;min-height:340px;font:15px/1.65 var(--sans);padding:10px;bor
     if(!CFG.token||!CFG.chatId) return consultErr('상담 접수 설정이 아직 안 되어 있습니다. 카톡 또는 031-8028-3085로 문의해 주세요.');
     var now=new Date(), pad=function(n){ return (n<10?'0':'')+n; };
     var rp=rep();
-    var text=['[바른통신 상담 신청]'].concat((rp.name||rp.phone)?['담당 영업자: '+[rp.name,rp.phone].filter(Boolean).join(' ')]:[]).concat(['고객 성함: '+v.name,'연락처: '+fmtPhone(v.phone),'지역: '+v.region,
+    var text=['[바른통신 상담 신청]'].concat((rp.shop||rp.name||rp.phone)?['담당 영업자: '+[rp.shop,rp.name,rp.phone].filter(Boolean).join(' ')]:[]).concat(['고객 성함: '+v.name,'연락처: '+fmtPhone(v.phone),'지역: '+v.region,
       '기존 모바일: '+v.mobile,'인터넷 통신사: '+v.isp,'약정 만료 여부: '+v.contract,'',
       '보고 있던 견적: '+(lastSummary||'없음'),
       '접수 시각: '+now.getFullYear()+'-'+pad(now.getMonth()+1)+'-'+pad(now.getDate())+' '+pad(now.getHours())+':'+pad(now.getMinutes())]).join('\n');
