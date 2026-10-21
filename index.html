@@ -83,6 +83,16 @@ table.bd td.v{text-align:right;font-weight:500;white-space:nowrap;padding-left:1
 table.bd tr.sum td{font-weight:800;font-size:18px;border-bottom:2px solid var(--ink)}
 table.bd tr.minus td.v{color:var(--accent)}
 table.bd tr.sec td{font-size:13px;color:var(--muted);font-weight:700;padding-top:16px}
+.won-input{display:flex;align-items:center;gap:8px}
+.won-input input{flex:1}
+.won-input span{font-weight:700}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+@media(max-width:420px){.two{grid-template-columns:1fr}}
+.fld2{display:flex;flex-direction:column;gap:4px}
+.fld2 label{font-size:13px;color:var(--muted);font-weight:500}
+textarea#msg{background:var(--surface)}
+textarea#msg:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+textarea#msg.edited{border-color:var(--warn)}
 table.bd tr.giftsum td{color:var(--gift);font-weight:800;font-size:18px;border-bottom:none}
 .alert{border-radius:8px;padding:10px 12px;font-size:14px}
 .alert.bad{background:var(--bad-soft);color:var(--bad)} .alert.warn{background:var(--warn-soft);color:var(--warn)}
@@ -160,6 +170,17 @@ textarea{width:100%;min-height:340px;font:15px/1.65 var(--sans);padding:10px;bor
       </section>
       <section class="card">
         <div class="step"><label for="cust">고객명 (메시지에 표시)</label><input type="text" id="cust" placeholder="예: 홍길동"></div>
+        <div class="step"><label for="gift-ov">고객 사은품 (직접 입력)</label>
+          <div class="won-input"><input type="text" id="gift-ov" inputmode="numeric" placeholder="비워두면 자동 계산 금액"><span>원</span></div>
+          <p class="note" id="gift-ov-note">입력하면 메시지와 화면에 이 금액이 사은품 합계로 나갑니다. 상품을 바꾸면 자동으로 지워집니다.</p></div>
+      </section>
+      <section class="card">
+        <div class="step"><span class="lbl">영업자 정보 <span style="font-weight:400;color:var(--muted)">(이 기기에만 저장, 메시지 서명에 들어감)</span></span>
+          <div class="two">
+            <div class="fld2"><label for="rep-name">영업자</label><input type="text" id="rep-name" maxlength="20" placeholder="예: 김대현 과장"></div>
+            <div class="fld2"><label for="rep-phone">연락처</label><input type="text" id="rep-phone" inputmode="numeric" maxlength="13" placeholder="010-0000-0000"></div>
+          </div>
+          <p class="note" id="rep-note">비워두면 기본 서명(김대현·이호석 과장)이 들어갑니다.</p></div>
       </section>
     </div>
 
@@ -168,9 +189,10 @@ textarea{width:100%;min-height:340px;font:15px/1.65 var(--sans);padding:10px;bor
       <div id="r-alerts" style="display:flex;flex-direction:column;gap:6px"></div>
       <table class="bd" id="r-table"></table>
       <div class="step">
-        <span class="lbl">고객 발송 메시지</span>
-        <textarea id="msg" readonly></textarea>
-        <div class="row"><button class="btn primary" id="copy">메시지 복사</button><span class="note">복사 후 카카오톡·문자에 붙여넣기</span></div>
+        <span class="lbl">고객 발송 메시지 <span style="font-weight:400;color:var(--muted)">(눌러서 직접 고칠 수 있어요)</span></span>
+        <textarea id="msg" spellcheck="false"></textarea>
+        <p class="note" id="msg-edited" hidden>✎ 직접 고친 내용입니다. 상품이나 입력값을 바꾸면 메시지가 새로 만들어집니다.</p>
+        <div class="row"><button class="btn primary" id="copy">메시지 복사</button><button class="btn small" id="msg-reset" hidden>처음 문구로 되돌리기</button><span class="note">복사 후 카카오톡·문자에 붙여넣기</span></div>
       </div>
     </section>
   </div>
@@ -349,7 +371,7 @@ textarea{width:100%;min-height:340px;font:15px/1.65 var(--sans);padding:10px;bor
     (q.errors||[]).forEach(function(e){ var d=document.createElement('div'); d.className='alert bad'; d.textContent=e; al.appendChild(d); });
     (q.warnings||[]).forEach(function(e){ var d=document.createElement('div'); d.className='alert warn'; d.textContent=e+' — 발송 전 요금을 확인하세요.'; al.appendChild(d); });
     var t=$('r-table'); t.innerHTML='';
-    if(q.errors&&q.errors.length){ $('msg').value=''; lastMsg=''; lastSummary=''; $('bar-m').textContent='-'; $('bar-g').textContent='-'; $('r-title').textContent='견적'; return; }
+    if(q.errors&&q.errors.length){ $('msg').value=''; lastMsg=''; lastSummary=''; setMsgEdited(false); $('bar-m').textContent='-'; $('bar-g').textContent='-'; $('r-title').textContent='견적'; return; }
     $('r-title').textContent=q.carrier.label+' '+HOME_LABEL[q.type]+(q.tvCount>1?' '+q.tvCount+'대':'')+(q.usimLines.length?'+유심':'');
     row(t,'월 요금','','sec');
     row(t,HOME_LABEL[q.type]+' '+(q.homeBundleDiscount?'정상가':'월 요금'),won(q.homeFee));
@@ -366,24 +388,64 @@ textarea{width:100%;min-height:340px;font:15px/1.65 var(--sans);padding:10px;bor
     row(t,'월 합계',won(q.monthlyTotal),'sum');
     row(t,'1회 비용','','sec');
     row(t,'설치비'+(q.installLabel?' ('+q.installLabel+')':'')+(q.installOffhour?' (야간·주말 ×'+q.carrier.install.offhourRate+')':''),q.installFinal===0?'무료':won(q.installFinal));
-    if(q.giftBlank){ row(t,'사은품','','sec'); row(t,'사은품','공란 (메시지에 표시 안 함)'); }
+    // 상품이 바뀌면 직접 입력한 사은품은 지움 (다른 상품에 잘못 적용되는 것 방지)
+    var planKey=[S.carrier,S.type,S.tvCount,S.plan].join('|');
+    if(lastPlanKey&&planKey!==lastPlanKey&&$('gift-ov').value){ $('gift-ov').value=''; toast('상품이 바뀌어 직접 입력한 사은품을 지웠습니다'); }
+    lastPlanKey=planKey;
+    var ov=giftOverride();
+    if(ov!==null){
+      row(t,'사은품','','sec');
+      row(t,'자동 계산 사은품',q.giftBlank?'공란':won(q.giftTotal));
+      row(t,'사은품 합계 (직접 입력)',won(ov),'giftsum');
+    }
+    else if(q.giftBlank){ row(t,'사은품','','sec'); row(t,'사은품','공란 (메시지에 표시 안 함)'); }
     else if(q.giftItems.length){
       row(t,'사은품','','sec');
       q.giftItems.forEach(function(g){ row(t,g.label,won(g.amount)); });
       row(t,'사은품 합계',won(q.giftTotal),'giftsum');
     }
-    lastMsg=C.buildMessage(q,{customer:$('cust').value.trim(),shop:SHOP_SIGN});
-    lastSummary=$('r-title').textContent+' / '+q.plan.name+' / 월 합계 '+won(q.monthlyTotal)+(q.giftBlank?'':' / 사은품 '+won(q.giftTotal));
+    var giftShown=ov!==null?won(ov):(q.giftBlank?'공란':won(q.giftTotal));
+    var opts={customer:$('cust').value.trim(),shop:signature()};
+    if(ov!==null) opts.giftOverride=ov;
+    var fresh=C.buildMessage(q,opts);
+    if(msgEdited&&fresh!==lastMsg) toast('입력값이 바뀌어 메시지를 새로 만들었습니다');
+    lastMsg=fresh; setMsgEdited(false);
+    lastSummary=$('r-title').textContent+' / '+q.plan.name+' / 월 합계 '+won(q.monthlyTotal)+(giftShown==='공란'?'':' / 사은품 '+giftShown);
     $('msg').value=lastMsg;
-    $('bar-m').textContent=won(q.monthlyTotal); $('bar-g').textContent=q.giftBlank?'공란':won(q.giftTotal);
+    $('bar-m').textContent=won(q.monthlyTotal); $('bar-g').textContent=giftShown;
   }
+
+  // 고객 사은품 직접 입력 (숫자만, 원 단위). 비어 있으면 null = 자동 계산 사용
+  var lastPlanKey='';
+  function giftOverride(){ var d=$('gift-ov').value.replace(/\D/g,''); return d===''?null:Number(d); }
+  $('gift-ov').addEventListener('input',function(){
+    var d=this.value.replace(/\D/g,'').replace(/^0+(?=\d)/,'').slice(0,9);
+    this.value=d?Number(d).toLocaleString('ko-KR'):''; renderResult();
+  });
+
+  // 영업자 정보 (기기별 저장) -> 메시지 서명
+  function fmtTel(v){ var d=v.replace(/\D/g,'').slice(0,11);
+    if(d.indexOf('02')===0) return d.length>9?d.replace(/^(02)(\d{4})(\d{4})$/,'$1-$2-$3'):d.replace(/^(02)(\d{0,3})(\d{0,4})$/,'$1-$2-$3').replace(/-+$/,'');
+    return d.length>10?d.replace(/^(\d{3})(\d{4})(\d{4})$/,'$1-$2-$3'):d.replace(/^(\d{3})(\d{0,3})(\d{0,4})$/,'$1-$2-$3').replace(/-+$/,''); }
+  function rep(){ return {name:$('rep-name').value.trim(), phone:$('rep-phone').value.trim()}; }
+  function signature(){ var r=rep(); if(!r.name&&!r.phone) return SHOP_SIGN;
+    return '대표 고객센터 : 031-8028-3085\n바른통신 '+[r.name,r.phone].filter(Boolean).join(' '); }
+  $('rep-name').value=store('repName')||''; $('rep-phone').value=store('repPhone')||'';
+  $('rep-name').addEventListener('input',function(){ store('repName',this.value); renderResult(); });
+  $('rep-phone').addEventListener('input',function(){ this.value=fmtTel(this.value); store('repPhone',this.value); renderResult(); });
+
+  // 메시지 직접 수정
+  var msgEdited=false;
+  function setMsgEdited(on){ msgEdited=on; $('msg').classList.toggle('edited',on); $('msg-edited').hidden=!on; $('msg-reset').hidden=!on; }
+  $('msg').addEventListener('input',function(){ setMsgEdited(this.value!==lastMsg); });
+  $('msg-reset').onclick=function(){ $('msg').value=lastMsg; setMsgEdited(false); };
 
   function toast(s){ var el=$('toast'); el.textContent=s; el.hidden=false; clearTimeout(toast.t); toast.t=setTimeout(function(){el.hidden=true;},1800); }
   function copy(){
-    if(!lastMsg){ toast('견적 오류를 먼저 해결하세요'); return; }
-    var ta=$('msg');
-    var fallback=function(){ ta.removeAttribute('readonly'); ta.focus(); ta.select(); try{document.execCommand('copy'); toast('복사했습니다');}catch(e){toast('메시지를 길게 눌러 복사하세요');} ta.setAttribute('readonly',''); };
-    if(navigator.clipboard&&navigator.clipboard.writeText) navigator.clipboard.writeText(lastMsg).then(function(){toast('복사했습니다');},fallback); else fallback();
+    var ta=$('msg'), text=ta.value;
+    if(!text.trim()){ toast('견적 오류를 먼저 해결하세요'); return; }
+    var fallback=function(){ ta.focus(); ta.select(); try{document.execCommand('copy'); toast('복사했습니다');}catch(e){toast('메시지를 길게 눌러 복사하세요');} };
+    if(navigator.clipboard&&navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(function(){toast(msgEdited?'고친 메시지를 복사했습니다':'복사했습니다');},fallback); else fallback();
   }
   $('copy').onclick=copy; $('bar-copy').onclick=copy;
 
@@ -425,10 +487,11 @@ textarea{width:100%;min-height:340px;font:15px/1.65 var(--sans);padding:10px;bor
     if(!$('c-agree').checked) return consultErr('개인정보 수집·이용에 동의해야 신청할 수 있습니다.');
     if(!CFG.token||!CFG.chatId) return consultErr('상담 접수 설정이 아직 안 되어 있습니다. 카톡 또는 031-8028-3085로 문의해 주세요.');
     var now=new Date(), pad=function(n){ return (n<10?'0':'')+n; };
-    var text=['[바른통신 상담 신청]','고객 성함: '+v.name,'연락처: '+fmtPhone(v.phone),'지역: '+v.region,
+    var rp=rep();
+    var text=['[바른통신 상담 신청]'].concat((rp.name||rp.phone)?['담당 영업자: '+[rp.name,rp.phone].filter(Boolean).join(' ')]:[]).concat(['고객 성함: '+v.name,'연락처: '+fmtPhone(v.phone),'지역: '+v.region,
       '기존 모바일: '+v.mobile,'인터넷 통신사: '+v.isp,'약정 만료 여부: '+v.contract,'',
       '보고 있던 견적: '+(lastSummary||'없음'),
-      '접수 시각: '+now.getFullYear()+'-'+pad(now.getMonth()+1)+'-'+pad(now.getDate())+' '+pad(now.getHours())+':'+pad(now.getMinutes())].join('\n');
+      '접수 시각: '+now.getFullYear()+'-'+pad(now.getMonth()+1)+'-'+pad(now.getDate())+' '+pad(now.getHours())+':'+pad(now.getMinutes())]).join('\n');
     var btn=$('c-submit'); btn.disabled=true; btn.textContent='보내는 중…';
     var body=new URLSearchParams(); body.append('chat_id',CFG.chatId); body.append('text',text);
     fetch('https://api.telegram.org/bot'+CFG.token+'/sendMessage',{method:'POST',body:body})

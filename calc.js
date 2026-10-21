@@ -188,7 +188,14 @@
     L.push('▶ 월 합계: ' + won(q.monthlyTotal));
     L.push('');
     L.push('■ 설치비: ' + (q.installFinal === 0 ? '무료' : won(q.installFinal) + (q.installOffhour ? ' (야간/주말 설치)' : '') + (q.installLabel ? ' (' + q.installLabel + ')' : '') + ' (1회)'));
-    if (q.giftTotal) {
+    if (typeof opt.giftOverride === 'number') {
+      // 영업자가 직접 입력한 고객 사은품 (자동 계산 내역 대신 이 금액만 안내)
+      if (opt.giftOverride > 0) {
+        L.push('');
+        L.push('■ 사은품 (현금)');
+        L.push('▶ 사은품 합계: ' + won(opt.giftOverride));
+      }
+    } else if (q.giftTotal) {
       L.push('');
       L.push('■ 사은품 (현금)');
       q.giftItems.forEach(function (g) { L.push('- ' + g.label + ': ' + won(g.amount)); });
