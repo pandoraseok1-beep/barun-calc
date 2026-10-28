@@ -510,12 +510,11 @@ window.RATE_DATA = {
      "code": "SK100-A",
      "speed": "100M",
      "name": "SK 광랜(100M)+AP",
-     "fee": 24200,
-     "bundleFee": 19800,
+     "fee": 23100,
+     "bundleFee": 18700,
      "gift": 100000,
      "secret": 80000,
-     "extraSetTop": 0,
-     "policy": "와이파이 임대료 2,200원 (2026년 10월 정책)"
+     "extraSetTop": 0
     },
     {
      "code": "SK500-A",
@@ -544,34 +543,31 @@ window.RATE_DATA = {
       "code": "SK100-B1",
       "speed": "100M",
       "name": "SK 광랜(100M)+이코노미(스마트3) 182채널+와이파이",
-      "fee": 37400,
-      "bundleFee": 33000,
+      "fee": 36300,
+      "bundleFee": 31900,
       "gift": 290000,
       "secret": 150000,
-      "extraSetTop": 0,
-      "policy": "와이파이 임대료 2,200원 (2026년 10월 정책)"
+      "extraSetTop": 0
      },
      {
       "code": "SK100-B2",
       "speed": "100M",
       "name": "SK 광랜(100M)+스탠다드(스마트3) 235채널+와이파이",
-      "fee": 40700,
-      "bundleFee": 36300,
+      "fee": 39600,
+      "bundleFee": 35200,
       "gift": 290000,
       "secret": 260000,
-      "extraSetTop": 0,
-      "policy": "와이파이 임대료 2,200원 (2026년 10월 정책)"
+      "extraSetTop": 0
      },
      {
       "code": "SK100-B3",
       "speed": "100M",
       "name": "SK 광랜(100M)+ALL(스마트3) 255채널+와이파이",
-      "fee": 44000,
-      "bundleFee": 39600,
+      "fee": 42900,
+      "bundleFee": 38500,
       "gift": 290000,
       "secret": 300000,
-      "extraSetTop": 0,
-      "policy": "와이파이 임대료 2,200원 (2026년 10월 정책)"
+      "extraSetTop": 0
      },
      {
       "code": "SK500-B4",
@@ -639,34 +635,31 @@ window.RATE_DATA = {
       "code": "SK100-BA",
       "speed": "100M",
       "name": "SK 광랜(100M)+이코노미(메인) 182채널+스탠다드(추가) 235채널+와이파이",
-      "fee": 47300,
-      "bundleFee": 42900,
+      "fee": 46200,
+      "bundleFee": 41800,
       "gift": 290000,
       "secret": 150000,
-      "extraSetTop": 30000,
-      "policy": "와이파이 임대료 2,200원 (2026년 10월 정책)"
+      "extraSetTop": 30000
      },
      {
       "code": "SK100-BB",
       "speed": "100M",
       "name": "SK 광랜(100M)+스탠다드(메인) 235채널+스탠다드(추가)235채널+와이파이",
-      "fee": 50600,
-      "bundleFee": 46200,
+      "fee": 49500,
+      "bundleFee": 45100,
       "gift": 290000,
       "secret": 260000,
-      "extraSetTop": 30000,
-      "policy": "와이파이 임대료 2,200원 (2026년 10월 정책)"
+      "extraSetTop": 30000
      },
      {
       "code": "SK100-BC",
       "speed": "100M",
       "name": "SK 광랜(100M)+ALL(메인) 255채널+스탠다드(추가) 235채널+와이파이",
-      "fee": 53900,
-      "bundleFee": 49500,
+      "fee": 52800,
+      "bundleFee": 48400,
       "gift": 290000,
       "secret": 300000,
-      "extraSetTop": 30000,
-      "policy": "와이파이 임대료 2,200원 (2026년 10월 정책)"
+      "extraSetTop": 30000
      },
      {
       "code": "SK500-BD",
@@ -734,34 +727,31 @@ window.RATE_DATA = {
       "code": "SK100-BA-1",
       "speed": "100M",
       "name": "SK 광랜(100M)+이코노미(메인) 182채널+스탠다드(추가) 235채널+스탠다드(추가) 235채널+와이파이",
-      "fee": 57200,
-      "bundleFee": 52800,
+      "fee": 56100,
+      "bundleFee": 51700,
       "gift": 290000,
       "secret": 150000,
-      "extraSetTop": 60000,
-      "policy": "와이파이 임대료 2,200원 (2026년 10월 정책)"
+      "extraSetTop": 60000
      },
      {
       "code": "SK100-BB-1",
       "speed": "100M",
       "name": "SK 광랜(100M)+스탠다드(메인) 235채널+스탠다드(추가) 235채널+스탠다드(추가) 235채널+와이파이",
-      "fee": 60500,
-      "bundleFee": 56100,
+      "fee": 59400,
+      "bundleFee": 55000,
       "gift": 290000,
       "secret": 260000,
-      "extraSetTop": 60000,
-      "policy": "와이파이 임대료 2,200원 (2026년 10월 정책)"
+      "extraSetTop": 60000
      },
      {
       "code": "SK100-BC-1",
       "speed": "100M",
       "name": "SK 광랜(100M)+ALL(메인) 255채널+스탠다드(추가) 235채널+스탠다드(추가) 235채널+와이파이",
-      "fee": 63800,
-      "bundleFee": 59400,
+      "fee": 62700,
+      "bundleFee": 58300,
       "gift": 290000,
       "secret": 300000,
-      "extraSetTop": 60000,
-      "policy": "와이파이 임대료 2,200원 (2026년 10월 정책)"
+      "extraSetTop": 60000
      },
      {
       "code": "SK500-BD-1",
