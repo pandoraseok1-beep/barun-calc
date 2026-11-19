@@ -2,7 +2,7 @@
 // fee=정상 월요금(3년약정), bundleFee=휴대폰 결합 시 월요금, gift=지원금, secret=추가지원금, extraSetTop=추가셋톱 지원금
 // blocked 가 있으면 견적이 차단됩니다. 요금 확인 후 blocked 줄을 지우세요.
 window.RATE_DATA = {
- "basisDate": "2026-09-26",
+ "basisDate": "2026-11-19",
  "source": "gigapang.com 공개 요금 데이터",
  "carriers": [
   {
@@ -22,7 +22,7 @@ window.RATE_DATA = {
      "fee": 23100,
      "bundleFee": 17600,
      "gift": 90000,
-     "secret": 60000,
+     "secret": 0,
      "extraSetTop": 0
     },
     {
@@ -31,8 +31,8 @@ window.RATE_DATA = {
      "name": "KT 베이직(500M)+AP",
      "fee": 34100,
      "bundleFee": 28600,
-     "gift": 130000,
-     "secret": 100000,
+     "gift": 140000,
+     "secret": 50000,
      "extraSetTop": 0
     },
     {
@@ -41,8 +41,8 @@ window.RATE_DATA = {
      "name": "KT 에센스(1G)+AP",
      "fee": 38500,
      "bundleFee": 33000,
-     "gift": 150000,
-     "secret": 120000,
+     "gift": 140000,
+     "secret": 70000,
      "extraSetTop": 0
     }
    ],
@@ -51,121 +51,91 @@ window.RATE_DATA = {
      {
       "code": "KT100-K1",
       "speed": "100M",
-      "name": "KT 슬림(100M)+베이직(지니3) 239채널+와이파이",
-      "fee": 39600,
-      "bundleFee": 34100,
-      "gift": 370000,
-      "secret": 100000,
-      "extraSetTop": 0
-     },
-     {
-      "code": "KT100-K2",
-      "speed": "100M",
-      "name": "KT 슬림(100M)+라이트(지니3) 243채널+와이파이",
-      "fee": 40700,
-      "bundleFee": 35200,
-      "gift": 370000,
-      "secret": 110000,
+      "name": "KT 슬림(100M)+베이직(지니4) 239채널+와이파이",
+      "fee": 41800,
+      "bundleFee": 36300,
+      "gift": 280000,
+      "secret": 150000,
       "extraSetTop": 0
      },
      {
       "code": "KT100-K3",
       "speed": "100M",
-      "name": "KT 슬림(100M)+에센스(지니3) 269채널+와이파이",
-      "fee": 44000,
-      "bundleFee": 38500,
-      "gift": 370000,
-      "secret": 110000,
+      "name": "KT 슬림(100M)+에센스(지니4) 269채널+와이파이",
+      "fee": 46200,
+      "bundleFee": 40700,
+      "gift": 280000,
+      "secret": 160000,
       "extraSetTop": 0
      },
      {
       "code": "KT100-K4",
       "speed": "100M",
-      "name": "KT 슬림(100M)+모든G(지니3) 250채널+와이파이",
-      "fee": 47300,
-      "bundleFee": 41800,
-      "gift": 370000,
-      "secret": 220000,
+      "name": "KT 슬림(100M)+모든G(지니4) 250채널+와이파이",
+      "fee": 49500,
+      "bundleFee": 44000,
+      "gift": 280000,
+      "secret": 270000,
       "extraSetTop": 0
      },
      {
       "code": "KT500-K5",
       "speed": "500M",
-      "name": "KT 베이직(500M)+베이직(지니3) 239채널+와이파이",
-      "fee": 45100,
-      "bundleFee": 39600,
-      "gift": 450000,
-      "secret": 120000,
-      "extraSetTop": 0
-     },
-     {
-      "code": "KT500-K6",
-      "speed": "500M",
-      "name": "KT 베이직(500M)+라이트(지니3) 243채널+와이파이",
-      "fee": 46200,
-      "bundleFee": 40700,
-      "gift": 450000,
+      "name": "KT 베이직(500M)+베이직(지니4) 239채널+와이파이",
+      "fee": 47300,
+      "bundleFee": 41800,
+      "gift": 400000,
       "secret": 130000,
       "extraSetTop": 0
      },
      {
       "code": "KT500-K7",
       "speed": "500M",
-      "name": "KT 베이직(500M)+에센스(지니3) 269채널+와이파이",
-      "fee": 49500,
-      "bundleFee": 44000,
-      "gift": 450000,
-      "secret": 180000,
+      "name": "KT 베이직(500M)+에센스(지니4) 269채널+와이파이",
+      "fee": 51700,
+      "bundleFee": 46200,
+      "gift": 400000,
+      "secret": 140000,
       "extraSetTop": 0
      },
      {
       "code": "KT500-K8",
       "speed": "500M",
-      "name": "KT 베이직(500M)+모든G(지니3) 250채널+와이파이",
-      "fee": 52800,
-      "bundleFee": 47300,
-      "gift": 450000,
-      "secret": 260000,
+      "name": "KT 베이직(500M)+모든G(지니4) 250채널+와이파이",
+      "fee": 55000,
+      "bundleFee": 49500,
+      "gift": 400000,
+      "secret": 270000,
       "extraSetTop": 0
      },
      {
       "code": "KT1G-K9",
       "speed": "1G",
-      "name": "KT 에센스(1G)+베이직(지니3) 239채널+와이파이",
-      "fee": 49500,
-      "bundleFee": 44000,
-      "gift": 450000,
-      "secret": 170000,
-      "extraSetTop": 0
-     },
-     {
-      "code": "KT1G-K10",
-      "speed": "1G",
-      "name": "KT 에센스(1G)+라이트(지니3) 243채널+와이파이",
-      "fee": 50600,
-      "bundleFee": 45100,
-      "gift": 450000,
+      "name": "KT 에센스(1G)+베이직(지니4) 239채널+와이파이",
+      "fee": 51700,
+      "bundleFee": 46200,
+      "gift": 400000,
       "secret": 180000,
       "extraSetTop": 0
      },
      {
       "code": "KT1G-K11",
       "speed": "1G",
-      "name": "KT 에센스(1G)+에센스(지니3) 269채널+와이파이",
-      "fee": 53900,
-      "bundleFee": 48400,
-      "gift": 450000,
-      "secret": 180000,
+      "name": "KT 에센스(1G)+에센스(지니4) 269채널+와이파이",
+      "fee": 56100,
+      "bundleFee": 50600,
+      "gift": 400000,
+      "secret": 190000,
       "extraSetTop": 0
      },
      {
       "code": "KT1G-K12",
       "speed": "1G",
-      "name": "KT 에센스(1G)+모든G(지니3) 250채널+와이파이",
-      "fee": 57200,
-      "bundleFee": 51700,
-      "gift": 450000,
-      "secret": 290000,
+      "name": "KT 에센스(1G)+모든G(지니4) 250채널+와이파이",
+      "fee": 59400,
+      "bundleFee": 53900,
+      "gift": 400000,
+      "secret": 300000,
       "extraSetTop": 0
      }
     ],
@@ -174,59 +144,59 @@ window.RATE_DATA = {
       "code": "KT100-KA",
       "speed": "100M",
       "name": "KT 슬림(100M)+베이직(메인) 239채널+베이직(추가) 239채널+와이파이",
-      "fee": 51370,
-      "bundleFee": 45870,
-      "gift": 370000,
-      "secret": 100000,
+      "fee": 55770,
+      "bundleFee": 50270,
+      "gift": 280000,
+      "secret": 150000,
       "extraSetTop": 30000
      },
      {
       "code": "KT100-KB",
       "speed": "100M",
       "name": "KT 슬림(100M)+라이트(메인) 243채널+베이직(추가) 239채널+와이파이",
-      "fee": 52470,
-      "bundleFee": 46970,
-      "gift": 370000,
-      "secret": 110000,
+      "fee": 56870,
+      "bundleFee": 51370,
+      "gift": 280000,
+      "secret": 150000,
       "extraSetTop": 30000
      },
      {
       "code": "KT100-KC",
       "speed": "100M",
       "name": "KT 슬림(100M)+에센스(메인) 269채널+베이직(추가) 239채널+와이파이",
-      "fee": 55770,
-      "bundleFee": 50270,
-      "gift": 370000,
-      "secret": 110000,
+      "fee": 60170,
+      "bundleFee": 54670,
+      "gift": 280000,
+      "secret": 160000,
       "extraSetTop": 30000
      },
      {
       "code": "KT100-KD",
       "speed": "100M",
       "name": "KT 슬림(100M)+모든G(메인) 250채널+베이직(추가) 239채널+와이파이",
-      "fee": 59070,
-      "bundleFee": 53570,
-      "gift": 370000,
-      "secret": 220000,
+      "fee": 63470,
+      "bundleFee": 57970,
+      "gift": 280000,
+      "secret": 270000,
       "extraSetTop": 30000
      },
      {
       "code": "KT500-KE",
       "speed": "500M",
       "name": "KT 베이직(500M)+베이직(메인) 239채널+베이직(추가) 239채널+와이파이",
-      "fee": 56870,
-      "bundleFee": 51370,
-      "gift": 450000,
-      "secret": 120000,
+      "fee": 61270,
+      "bundleFee": 55770,
+      "gift": 400000,
+      "secret": 130000,
       "extraSetTop": 30000
      },
      {
       "code": "KT500-KF",
       "speed": "500M",
       "name": "KT 베이직(500M)+라이트(메인) 243채널+베이직(추가) 239채널+와이파이",
-      "fee": 57970,
-      "bundleFee": 52470,
-      "gift": 450000,
+      "fee": 62370,
+      "bundleFee": 56870,
+      "gift": 400000,
       "secret": 130000,
       "extraSetTop": 30000
      },
@@ -234,39 +204,39 @@ window.RATE_DATA = {
       "code": "KT500-KG",
       "speed": "500M",
       "name": "KT 베이직(500M)+에센스(메인) 269채널+베이직(추가) 239채널+와이파이",
-      "fee": 61270,
-      "bundleFee": 55770,
-      "gift": 450000,
-      "secret": 180000,
+      "fee": 65670,
+      "bundleFee": 60170,
+      "gift": 400000,
+      "secret": 140000,
       "extraSetTop": 30000
      },
      {
       "code": "KT500-KH",
       "speed": "500M",
       "name": "KT 베이직(500M)+모든G(메인) 250채널+베이직(추가) 239채널+와이파이",
-      "fee": 64570,
-      "bundleFee": 59070,
-      "gift": 450000,
-      "secret": 260000,
+      "fee": 68970,
+      "bundleFee": 63470,
+      "gift": 400000,
+      "secret": 270000,
       "extraSetTop": 30000
      },
      {
       "code": "KT1G-KI",
       "speed": "1G",
       "name": "KT 에센스(1G)+베이직(메인) 239채널+베이직(추가) 239채널+AP",
-      "fee": 61270,
-      "bundleFee": 55770,
-      "gift": 450000,
-      "secret": 170000,
+      "fee": 65670,
+      "bundleFee": 60170,
+      "gift": 400000,
+      "secret": 180000,
       "extraSetTop": 30000
      },
      {
       "code": "KT1G-KJ",
       "speed": "1G",
       "name": "KT 에센스(1G)+라이트(메인) 243채널 +베이직(추가) 239채널+AP",
-      "fee": 62370,
-      "bundleFee": 56870,
-      "gift": 450000,
+      "fee": 66770,
+      "bundleFee": 61270,
+      "gift": 400000,
       "secret": 180000,
       "extraSetTop": 30000
      },
@@ -274,20 +244,20 @@ window.RATE_DATA = {
       "code": "KT1G-KK",
       "speed": "1G",
       "name": "KT 에센스(1G)+에센스(메인) 269채널+베이직(추가) 239채널+AP",
-      "fee": 65670,
-      "bundleFee": 60170,
-      "gift": 450000,
-      "secret": 180000,
+      "fee": 70070,
+      "bundleFee": 64570,
+      "gift": 400000,
+      "secret": 190000,
       "extraSetTop": 30000
      },
      {
       "code": "KT1G-KL",
       "speed": "1G",
       "name": "KT 에센스(1G)+모든G(메인) 250채널+베이직(추가) 239채널+AP",
-      "fee": 68970,
-      "bundleFee": 63470,
-      "gift": 450000,
-      "secret": 290000,
+      "fee": 73370,
+      "bundleFee": 67870,
+      "gift": 400000,
+      "secret": 300000,
       "extraSetTop": 30000
      }
     ],
@@ -296,60 +266,59 @@ window.RATE_DATA = {
       "code": "KT100-KA-1",
       "speed": "100M",
       "name": "KT 슬림(100M)+베이직(메인) 239채널+베이직(추가) 239채널+베이직(추가) 239채널+와이파이",
-      "fee": 40700,
-      "bundleFee": 57640,
-      "gift": 370000,
-      "secret": 100000,
-      "extraSetTop": 60000,
-      "blocked": "원본 정상가(40,700원)가 결합가(57,640원)보다 낮음 - 요금 확인 필요"
+      "fee": 69740,
+      "bundleFee": 64240,
+      "gift": 280000,
+      "secret": 150000,
+      "extraSetTop": 60000
      },
      {
       "code": "KT100-KB-1",
       "speed": "100M",
       "name": "KT 슬림(100M)+라이트(메인) 243채널+베이직(추가) 239채널+베이직(추가) 239채널+와이파이",
-      "fee": 64240,
-      "bundleFee": 58740,
-      "gift": 370000,
-      "secret": 110000,
+      "fee": 70840,
+      "bundleFee": 65340,
+      "gift": 280000,
+      "secret": 150000,
       "extraSetTop": 60000
      },
      {
       "code": "KT100-KC-1",
       "speed": "100M",
       "name": "KT 슬림(100M)+에센스(메인) 269채널+베이직(추가) 239채널+베이직(추가) 239채널+와이파이",
-      "fee": 67540,
-      "bundleFee": 62040,
-      "gift": 370000,
-      "secret": 110000,
+      "fee": 74140,
+      "bundleFee": 68640,
+      "gift": 280000,
+      "secret": 160000,
       "extraSetTop": 60000
      },
      {
       "code": "KT100-KD-1",
       "speed": "100M",
       "name": "KT 슬림(100M)+모든G(메인) 250채널+베이직(추가) 239채널+베이직(추가) 239채널+와이파이",
-      "fee": 68640,
-      "bundleFee": 63140,
-      "gift": 370000,
-      "secret": 220000,
+      "fee": 77440,
+      "bundleFee": 71940,
+      "gift": 280000,
+      "secret": 270000,
       "extraSetTop": 60000
      },
      {
       "code": "KT500-KE-1",
       "speed": "500M",
       "name": "KT 베이직(500M)+베이직(메인) 239채널+베이직(추가) 239채널+베이직(추가) 239채널+와이파이",
-      "fee": 68640,
-      "bundleFee": 63140,
-      "gift": 450000,
-      "secret": 120000,
+      "fee": 75240,
+      "bundleFee": 69740,
+      "gift": 400000,
+      "secret": 130000,
       "extraSetTop": 60000
      },
      {
       "code": "KT500-KF-1",
       "speed": "500M",
       "name": "KT 베이직(500M)+라이트(메인) 243채널+베이직(추가) 239채널+베이직(추가) 239채널+와이파이",
-      "fee": 69740,
-      "bundleFee": 64240,
-      "gift": 450000,
+      "fee": 76340,
+      "bundleFee": 70840,
+      "gift": 400000,
       "secret": 130000,
       "extraSetTop": 60000
      },
@@ -357,39 +326,39 @@ window.RATE_DATA = {
       "code": "KT500-KG-1",
       "speed": "500M",
       "name": "KT 베이직(500M)+에센스(메인) 269채널+베이직(추가) 239채널+베이직(추가) 239채널+와이파이",
-      "fee": 73040,
-      "bundleFee": 67540,
-      "gift": 450000,
-      "secret": 180000,
+      "fee": 79640,
+      "bundleFee": 74140,
+      "gift": 400000,
+      "secret": 140000,
       "extraSetTop": 60000
      },
      {
       "code": "KT500-KH-1",
       "speed": "500M",
       "name": "KT 베이직(500M)+모든G(메인) 250채널+베이직(추가) 239채널+베이직(추가) 239채널+와이파이",
-      "fee": 74140,
-      "bundleFee": 68640,
-      "gift": 450000,
-      "secret": 260000,
+      "fee": 82940,
+      "bundleFee": 77440,
+      "gift": 400000,
+      "secret": 270000,
       "extraSetTop": 60000
      },
      {
       "code": "KT1G-KI-1",
       "speed": "1G",
       "name": "KT 에센스(1G)+베이직(메인) 239채널+베이직(추가) 239채널+베이직(추가) 239채널+와이파이",
-      "fee": 73040,
-      "bundleFee": 67540,
-      "gift": 450000,
-      "secret": 170000,
+      "fee": 79640,
+      "bundleFee": 74140,
+      "gift": 400000,
+      "secret": 180000,
       "extraSetTop": 60000
      },
      {
       "code": "KT1G-KJ-1",
       "speed": "1G",
       "name": "KT 에센스(1G)+라이트(메인) 243채널+베이직(추가) 239채널+베이직(추가) 239채널+와이파이",
-      "fee": 74140,
-      "bundleFee": 68640,
-      "gift": 450000,
+      "fee": 80740,
+      "bundleFee": 75240,
+      "gift": 400000,
       "secret": 180000,
       "extraSetTop": 60000
      },
@@ -397,20 +366,20 @@ window.RATE_DATA = {
       "code": "KT1G-KK-1",
       "speed": "1G",
       "name": "KT 에센스(1G)+에센스(메인) 269채널+베이직(추가) 239채널+베이직(추가) 239채널+와이파이",
-      "fee": 77440,
-      "bundleFee": 71940,
-      "gift": 450000,
-      "secret": 180000,
+      "fee": 84040,
+      "bundleFee": 78540,
+      "gift": 400000,
+      "secret": 190000,
       "extraSetTop": 60000
      },
      {
       "code": "KT1G-KL-1",
       "speed": "1G",
       "name": "KT 에센스(1G)+모든G(메인) 250채널+베이직(추가) 239채널+베이직(추가) 239채널+와이파이",
-      "fee": 80740,
-      "bundleFee": 75240,
-      "gift": 450000,
-      "secret": 290000,
+      "fee": 87340,
+      "bundleFee": 81840,
+      "gift": 400000,
+      "secret": 300000,
       "extraSetTop": 60000
      }
     ]
@@ -512,8 +481,8 @@ window.RATE_DATA = {
      "name": "SK 광랜(100M)+AP",
      "fee": 23100,
      "bundleFee": 18700,
-     "gift": 100000,
-     "secret": 80000,
+     "gift": 90000,
+     "secret": 60000,
      "extraSetTop": 0
     },
     {
@@ -523,7 +492,7 @@ window.RATE_DATA = {
      "fee": 34100,
      "bundleFee": 23100,
      "gift": 170000,
-     "secret": 100000,
+     "secret": 30000,
      "extraSetTop": 0
     },
     {
@@ -533,22 +502,12 @@ window.RATE_DATA = {
      "fee": 39600,
      "bundleFee": 26400,
      "gift": 170000,
-     "secret": 100000,
+     "secret": 60000,
      "extraSetTop": 0
     }
    ],
    "tv": {
     "1": [
-     {
-      "code": "SK100-B1",
-      "speed": "100M",
-      "name": "SK 광랜(100M)+이코노미(스마트3) 182채널+와이파이",
-      "fee": 36300,
-      "bundleFee": 31900,
-      "gift": 290000,
-      "secret": 150000,
-      "extraSetTop": 0
-     },
      {
       "code": "SK100-B2",
       "speed": "100M",
@@ -556,7 +515,7 @@ window.RATE_DATA = {
       "fee": 39600,
       "bundleFee": 35200,
       "gift": 290000,
-      "secret": 260000,
+      "secret": 220000,
       "extraSetTop": 0
      },
      {
@@ -566,17 +525,7 @@ window.RATE_DATA = {
       "fee": 42900,
       "bundleFee": 38500,
       "gift": 290000,
-      "secret": 300000,
-      "extraSetTop": 0
-     },
-     {
-      "code": "SK500-B4",
-      "speed": "500M",
-      "name": "SK 기가라이트(500M)+이코노미(스마트3) 182채널+와이파이",
-      "fee": 42900,
-      "bundleFee": 36300,
-      "gift": 370000,
-      "secret": 160000,
+      "secret": 260000,
       "extraSetTop": 0
      },
      {
@@ -585,8 +534,8 @@ window.RATE_DATA = {
       "name": "SK 기가라이트(500M)+스탠다드(스마트3) 235채널+와이파이",
       "fee": 46200,
       "bundleFee": 39600,
-      "gift": 370000,
-      "secret": 300000,
+      "gift": 390000,
+      "secret": 240000,
       "extraSetTop": 0
      },
      {
@@ -595,28 +544,18 @@ window.RATE_DATA = {
       "name": "SK 기가라이트(500M)+ALL(스마트3) 255채널+와이파이",
       "fee": 49500,
       "bundleFee": 42900,
-      "gift": 370000,
-      "secret": 320000,
-      "extraSetTop": 0
-     },
-     {
-      "code": "SK1G-B7",
-      "speed": "1G",
-      "name": "SK 기가(1G)+이코노미(스마트3) 182채널+와이파이",
-      "fee": 48400,
-      "bundleFee": 39600,
-      "gift": 370000,
-      "secret": 160000,
+      "gift": 390000,
+      "secret": 280000,
       "extraSetTop": 0
      },
      {
       "code": "SK1G-B8",
       "speed": "1G",
-      "name": "SK 기가(1G+스탠다드(스마트3) 235채널+와이파이",
+      "name": "SK 기가(1G)+스탠다드(스마트3) 235채널+와이파이",
       "fee": 51700,
       "bundleFee": 42900,
-      "gift": 370000,
-      "secret": 300000,
+      "gift": 390000,
+      "secret": 240000,
       "extraSetTop": 0
      },
      {
@@ -625,8 +564,8 @@ window.RATE_DATA = {
       "name": "SK 기가(1G)+ALL(스마트3) 255채널+와이파이",
       "fee": 55000,
       "bundleFee": 46200,
-      "gift": 370000,
-      "secret": 320000,
+      "gift": 390000,
+      "secret": 280000,
       "extraSetTop": 0
      }
     ],
@@ -638,7 +577,7 @@ window.RATE_DATA = {
       "fee": 46200,
       "bundleFee": 41800,
       "gift": 290000,
-      "secret": 150000,
+      "secret": 110000,
       "extraSetTop": 30000
      },
      {
@@ -648,7 +587,7 @@ window.RATE_DATA = {
       "fee": 49500,
       "bundleFee": 45100,
       "gift": 290000,
-      "secret": 260000,
+      "secret": 220000,
       "extraSetTop": 30000
      },
      {
@@ -658,17 +597,7 @@ window.RATE_DATA = {
       "fee": 52800,
       "bundleFee": 48400,
       "gift": 290000,
-      "secret": 300000,
-      "extraSetTop": 30000
-     },
-     {
-      "code": "SK500-BD",
-      "speed": "500M",
-      "name": "SK 기가라이트(500M)+이코노미(메인) 182채널+스탠다드(추가) 235채널+와이파이",
-      "fee": 52800,
-      "bundleFee": 46200,
-      "gift": 370000,
-      "secret": 160000,
+      "secret": 260000,
       "extraSetTop": 30000
      },
      {
@@ -677,8 +606,8 @@ window.RATE_DATA = {
       "name": "SK 기가라이트(500M)+스탠다드(메인) 235채널+스탠다드(추가) 235채널+와이파이",
       "fee": 56100,
       "bundleFee": 49500,
-      "gift": 370000,
-      "secret": 300000,
+      "gift": 390000,
+      "secret": 240000,
       "extraSetTop": 30000
      },
      {
@@ -687,18 +616,8 @@ window.RATE_DATA = {
       "name": "SK 기가라이트(500M)+ALL(메인) 255채널+스탠다드(추가) 235채널+와이파이",
       "fee": 59400,
       "bundleFee": 52800,
-      "gift": 370000,
-      "secret": 320000,
-      "extraSetTop": 30000
-     },
-     {
-      "code": "SK1G-BG",
-      "speed": "1G",
-      "name": "SK 기가(1G)+이코노미(메인) 182채널+스탠다드(추가) 235채널+와이파이",
-      "fee": 58300,
-      "bundleFee": 49500,
-      "gift": 370000,
-      "secret": 160000,
+      "gift": 390000,
+      "secret": 280000,
       "extraSetTop": 30000
      },
      {
@@ -707,8 +626,8 @@ window.RATE_DATA = {
       "name": "SK 기가(1G)+스탠다드(메인) 235채널+스탠다드(추가) 235채널+와이파이",
       "fee": 61600,
       "bundleFee": 52800,
-      "gift": 370000,
-      "secret": 300000,
+      "gift": 390000,
+      "secret": 240000,
       "extraSetTop": 30000
      },
      {
@@ -717,8 +636,8 @@ window.RATE_DATA = {
       "name": "SK 기가(1G)+ALL(메인) 255채널+스탠다드(추가) 235채널+와이파이",
       "fee": 64900,
       "bundleFee": 56100,
-      "gift": 370000,
-      "secret": 320000,
+      "gift": 390000,
+      "secret": 280000,
       "extraSetTop": 30000
      }
     ],
@@ -730,7 +649,7 @@ window.RATE_DATA = {
       "fee": 56100,
       "bundleFee": 51700,
       "gift": 290000,
-      "secret": 150000,
+      "secret": 110000,
       "extraSetTop": 60000
      },
      {
@@ -740,7 +659,7 @@ window.RATE_DATA = {
       "fee": 59400,
       "bundleFee": 55000,
       "gift": 290000,
-      "secret": 260000,
+      "secret": 220000,
       "extraSetTop": 60000
      },
      {
@@ -750,17 +669,7 @@ window.RATE_DATA = {
       "fee": 62700,
       "bundleFee": 58300,
       "gift": 290000,
-      "secret": 300000,
-      "extraSetTop": 60000
-     },
-     {
-      "code": "SK500-BD-1",
-      "speed": "500M",
-      "name": "SK 기가라이트(500M)+이코노미(메인) 182채널+스탠다드(추가) 235채널+스탠다드(추가) 235채널+와이파이",
-      "fee": 62700,
-      "bundleFee": 56100,
-      "gift": 370000,
-      "secret": 160000,
+      "secret": 260000,
       "extraSetTop": 60000
      },
      {
@@ -769,8 +678,8 @@ window.RATE_DATA = {
       "name": "SK 기가라이트(500M)+스탠다드(메인) 235채널+스탠다드(추가) 235채널+스탠다드(추가) 235채널+와이파이",
       "fee": 66000,
       "bundleFee": 59400,
-      "gift": 370000,
-      "secret": 300000,
+      "gift": 390000,
+      "secret": 240000,
       "extraSetTop": 60000
      },
      {
@@ -779,18 +688,8 @@ window.RATE_DATA = {
       "name": "SK 기가라이트(500M)+ALL(메인) 255채널+스탠다드(추가) 235채널+스탠다드(추가) 235채널+와이파이",
       "fee": 69300,
       "bundleFee": 62700,
-      "gift": 370000,
-      "secret": 320000,
-      "extraSetTop": 60000
-     },
-     {
-      "code": "SK1G-BG-1",
-      "speed": "1G",
-      "name": "SK 기가(1G)+이코노미(메인) 182채널+스탠다드(추가) 235채널+스탠다드(추가) 235채널+와이파이",
-      "fee": 68200,
-      "bundleFee": 59400,
-      "gift": 370000,
-      "secret": 160000,
+      "gift": 390000,
+      "secret": 280000,
       "extraSetTop": 60000
      },
      {
@@ -799,8 +698,8 @@ window.RATE_DATA = {
       "name": "SK 기가(1G)+스탠다드(메인) 235채널+스탠다드(추가) 235채널+스탠다드(추가) 235채널+와이파이",
       "fee": 71500,
       "bundleFee": 62700,
-      "gift": 370000,
-      "secret": 300000,
+      "gift": 390000,
+      "secret": 240000,
       "extraSetTop": 60000
      },
      {
@@ -809,8 +708,8 @@ window.RATE_DATA = {
       "name": "SK 기가(1G)+ALL(메인) 255채널+스탠다드(추가) 235채널+스탠다드(추가) 235채널+와이파이",
       "fee": 74800,
       "bundleFee": 66000,
-      "gift": 370000,
-      "secret": 320000,
+      "gift": 390000,
+      "secret": 280000,
       "extraSetTop": 60000
      }
     ]
@@ -833,8 +732,8 @@ window.RATE_DATA = {
      "name": "LG 와이파이 광랜(100M)+AP",
      "fee": 22000,
      "bundleFee": 16500,
-     "gift": 200000,
-     "secret": 30000,
+     "gift": 150000,
+     "secret": 0,
      "extraSetTop": 0
     },
     {
@@ -843,8 +742,8 @@ window.RATE_DATA = {
      "name": "LG 와이파이 광랜(500M)+AP",
      "fee": 33000,
      "bundleFee": 23100,
-     "gift": 230000,
-     "secret": 100000,
+     "gift": 200000,
+     "secret": 0,
      "extraSetTop": 0
     },
     {
@@ -854,7 +753,7 @@ window.RATE_DATA = {
      "fee": 38500,
      "bundleFee": 25300,
      "gift": 230000,
-     "secret": 160000,
+     "secret": 0,
      "extraSetTop": 0
     }
    ],
@@ -866,8 +765,8 @@ window.RATE_DATA = {
       "name": "LG 와이파이광랜(100M)+실속형(UHD4) 217채널+와이파이",
       "fee": 39600,
       "bundleFee": 34100,
-      "gift": 400000,
-      "secret": 150000,
+      "gift": 300000,
+      "secret": 180000,
       "extraSetTop": 0
      },
      {
@@ -876,8 +775,8 @@ window.RATE_DATA = {
       "name": "LG 와이파이광랜(100M)+기본형(UHD4) 223채널+와이파이",
       "fee": 40700,
       "bundleFee": 35200,
-      "gift": 400000,
-      "secret": 150000,
+      "gift": 300000,
+      "secret": 180000,
       "extraSetTop": 0
      },
      {
@@ -886,8 +785,38 @@ window.RATE_DATA = {
       "name": "LG 와이파이광랜(100M)+프리미엄(UHD4) 252채널+와이파이",
       "fee": 42900,
       "bundleFee": 37400,
-      "gift": 400000,
-      "secret": 150000,
+      "gift": 300000,
+      "secret": 180000,
+      "extraSetTop": 0
+     },
+     {
+      "code": "LG100-P4",
+      "speed": "100M",
+      "name": "LG 프리미엄안심(100M)+실속형(UHD4) 217채널+와이파이",
+      "fee": 42900,
+      "bundleFee": 37400,
+      "gift": 300000,
+      "secret": 180000,
+      "extraSetTop": 0
+     },
+     {
+      "code": "LG100-P5",
+      "speed": "100M",
+      "name": "LG 프리미엄안심(100M)+기본형(UHD4) 223채널+와이파이",
+      "fee": 44000,
+      "bundleFee": 38500,
+      "gift": 300000,
+      "secret": 180000,
+      "extraSetTop": 0
+     },
+     {
+      "code": "LG100-P6",
+      "speed": "100M",
+      "name": "LG 프리미엄안심(100M)+프리미엄(UHD4) 252채널+와이파이",
+      "fee": 46200,
+      "bundleFee": 40700,
+      "gift": 300000,
+      "secret": 180000,
       "extraSetTop": 0
      },
      {
@@ -896,7 +825,7 @@ window.RATE_DATA = {
       "name": "LG 와이파이기가슬림(500M)+실속형(UHD4) 217채널+와이파이",
       "fee": 45100,
       "bundleFee": 35200,
-      "gift": 470000,
+      "gift": 400000,
       "secret": 170000,
       "extraSetTop": 0
      },
@@ -906,7 +835,7 @@ window.RATE_DATA = {
       "name": "LG 와이파이기가슬림(500M)+기본형(UHD4) 223채널+와이파이",
       "fee": 46200,
       "bundleFee": 36300,
-      "gift": 470000,
+      "gift": 400000,
       "secret": 170000,
       "extraSetTop": 0
      },
@@ -916,7 +845,37 @@ window.RATE_DATA = {
       "name": "LG 와이파이기가슬림(500M)+프리미엄(UHD4) 252채널+와이파이",
       "fee": 48400,
       "bundleFee": 38500,
-      "gift": 470000,
+      "gift": 400000,
+      "secret": 170000,
+      "extraSetTop": 0
+     },
+     {
+      "code": "LG500-P4",
+      "speed": "500M",
+      "name": "LG 프리미엄기가슬림(500M)+실속형(UHD4) 217채널+와이파이+클락",
+      "fee": 49500,
+      "bundleFee": 39600,
+      "gift": 400000,
+      "secret": 170000,
+      "extraSetTop": 0
+     },
+     {
+      "code": "LG500-P5",
+      "speed": "500M",
+      "name": "LG 프리미엄기가슬림(500M)+기본형(UHD4) 223채널+와이파이+클락",
+      "fee": 50600,
+      "bundleFee": 40700,
+      "gift": 400000,
+      "secret": 170000,
+      "extraSetTop": 0
+     },
+     {
+      "code": "LG500-P6",
+      "speed": "500M",
+      "name": "LG 프리미엄기가슬림(500M)+프리미엄(UHD4) 252채널+와이파이+클락",
+      "fee": 52800,
+      "bundleFee": 42900,
+      "gift": 400000,
       "secret": 170000,
       "extraSetTop": 0
      },
@@ -926,7 +885,7 @@ window.RATE_DATA = {
       "name": "LG 와이파이기가안심(1G)+실속형(UHD4) 217채널+와이파이",
       "fee": 50600,
       "bundleFee": 37400,
-      "gift": 470000,
+      "gift": 400000,
       "secret": 220000,
       "extraSetTop": 0
      },
@@ -936,7 +895,7 @@ window.RATE_DATA = {
       "name": "LG 와이파이기가안심(1G)+기본형(UHD4) 223채널+와이파이",
       "fee": 51700,
       "bundleFee": 38500,
-      "gift": 470000,
+      "gift": 400000,
       "secret": 220000,
       "extraSetTop": 0
      },
@@ -946,7 +905,37 @@ window.RATE_DATA = {
       "name": "LG 와이파이기가안심(1G)+프리미엄(UHD4) 252채널+와이파이",
       "fee": 53900,
       "bundleFee": 40700,
-      "gift": 470000,
+      "gift": 400000,
+      "secret": 220000,
+      "extraSetTop": 0
+     },
+     {
+      "code": "LG1G-P4",
+      "speed": "1G",
+      "name": "LG 프리미엄기가안심(1G)+실속형(UHD4) 217채널+와이파이+클락",
+      "fee": 55000,
+      "bundleFee": 41800,
+      "gift": 400000,
+      "secret": 220000,
+      "extraSetTop": 0
+     },
+     {
+      "code": "LG1G-P5",
+      "speed": "1G",
+      "name": "LG 프리미엄기가안심(1G)+기본형(UHD4) 223채널+와이파이+클락",
+      "fee": 56100,
+      "bundleFee": 42900,
+      "gift": 400000,
+      "secret": 220000,
+      "extraSetTop": 0
+     },
+     {
+      "code": "LG1G-P6",
+      "speed": "1G",
+      "name": "LG 프리미엄기가안심(1G)+프리미엄(UHD4) 252채널+와이파이+클락",
+      "fee": 58300,
+      "bundleFee": 45100,
+      "gift": 400000,
       "secret": 220000,
       "extraSetTop": 0
      }
@@ -958,8 +947,8 @@ window.RATE_DATA = {
       "name": "LG 와이파이광랜(100M)+실속형(메인) 217채널+실속형(추가) 217채널+와이파이",
       "fee": 51700,
       "bundleFee": 46200,
-      "gift": 400000,
-      "secret": 150000,
+      "gift": 300000,
+      "secret": 180000,
       "extraSetTop": 30000
      },
      {
@@ -968,8 +957,8 @@ window.RATE_DATA = {
       "name": "LG 와이파이광랜(100M)+기본형(메인) 223채널+실속형(추가) 217채널+와이파이",
       "fee": 52800,
       "bundleFee": 47300,
-      "gift": 400000,
-      "secret": 150000,
+      "gift": 300000,
+      "secret": 180000,
       "extraSetTop": 30000
      },
      {
@@ -978,38 +967,8 @@ window.RATE_DATA = {
       "name": "LG 와이파이광랜(100M)+프리미엄(메인) 252채널+실속형(추가) 217채널+와이파이",
       "fee": 55000,
       "bundleFee": 49500,
-      "gift": 400000,
-      "secret": 150000,
-      "extraSetTop": 30000
-     },
-     {
-      "code": "LG100-GD",
-      "speed": "100M",
-      "name": "LG 프리미엄안심(100M)+실속형(메인) 217채널+실속형(추가) 217채널+와이파이+클락",
-      "fee": 55000,
-      "bundleFee": 49500,
-      "gift": 400000,
-      "secret": 160000,
-      "extraSetTop": 30000
-     },
-     {
-      "code": "LG100-GE",
-      "speed": "100M",
-      "name": "LG 프리미엄안심(100M)+기본형(메인) 223채널+실속형(추가) 217채널+와이파이+클락",
-      "fee": 56100,
-      "bundleFee": 50600,
-      "gift": 400000,
-      "secret": 160000,
-      "extraSetTop": 30000
-     },
-     {
-      "code": "LG100-GF",
-      "speed": "100M",
-      "name": "LG 프리미엄안심(100M)+프리미엄(메인) 252채널+실속형(추가) 217채널+와이파이+클락",
-      "fee": 58300,
-      "bundleFee": 52800,
-      "gift": 400000,
-      "secret": 160000,
+      "gift": 300000,
+      "secret": 180000,
       "extraSetTop": 30000
      },
      {
@@ -1018,7 +977,7 @@ window.RATE_DATA = {
       "name": "LG 와이파이기가슬림(500M)+실속형(메인) 217채널+실속형(추가) 217채널+와이파이",
       "fee": 57200,
       "bundleFee": 47300,
-      "gift": 470000,
+      "gift": 400000,
       "secret": 170000,
       "extraSetTop": 30000
      },
@@ -1028,7 +987,7 @@ window.RATE_DATA = {
       "name": "LG 와이파이기가슬림(500M)+기본형(메인) 223채널+실속형(추가) 217채널+와이파이",
       "fee": 58300,
       "bundleFee": 48400,
-      "gift": 470000,
+      "gift": 400000,
       "secret": 170000,
       "extraSetTop": 30000
      },
@@ -1038,38 +997,8 @@ window.RATE_DATA = {
       "name": "LG 와이파이기가슬림(500M)+프리미엄(메인) 252채널+실속형(추가) 217채널+와이파이",
       "fee": 60500,
       "bundleFee": 50600,
-      "gift": 470000,
+      "gift": 400000,
       "secret": 170000,
-      "extraSetTop": 30000
-     },
-     {
-      "code": "LG500-GJ",
-      "speed": "500M",
-      "name": "LG 프리미엄안심(500M)+실속형(메인) 217채널+실속형(추가) 217채널+와이파이+클락",
-      "fee": 61600,
-      "bundleFee": 51700,
-      "gift": 470000,
-      "secret": 180000,
-      "extraSetTop": 30000
-     },
-     {
-      "code": "LG500-GK",
-      "speed": "500M",
-      "name": "LG 프리미엄안심(500M)+기본형(메인) 223채널+실속형(추가) 217채널+와이파이+클락",
-      "fee": 62700,
-      "bundleFee": 52800,
-      "gift": 470000,
-      "secret": 180000,
-      "extraSetTop": 30000
-     },
-     {
-      "code": "LG500-GL",
-      "speed": "500M",
-      "name": "LG 프리미엄안심(500M)+프리미엄(메인) 252채널+실속형(추가) 217채널+와이파이+클락",
-      "fee": 64900,
-      "bundleFee": 55000,
-      "gift": 470000,
-      "secret": 250000,
       "extraSetTop": 30000
      },
      {
@@ -1078,7 +1007,7 @@ window.RATE_DATA = {
       "name": "LG 와이파이기가안심(1G)+실속형(메인) 217채널+실속형(추가) 217채널+와이파이",
       "fee": 62700,
       "bundleFee": 49500,
-      "gift": 470000,
+      "gift": 400000,
       "secret": 220000,
       "extraSetTop": 30000
      },
@@ -1088,7 +1017,7 @@ window.RATE_DATA = {
       "name": "LG 와이파이기가안심(1G)+기본형(메인) 223채널+실속형(추가) 217채널+와이파이",
       "fee": 63800,
       "bundleFee": 50600,
-      "gift": 470000,
+      "gift": 400000,
       "secret": 220000,
       "extraSetTop": 30000
      },
@@ -1098,38 +1027,8 @@ window.RATE_DATA = {
       "name": "LG 와이파이기가안심(1G)+프리미엄(메인) 252채널+실속형(추가) 217채널+와이파이",
       "fee": 66000,
       "bundleFee": 52800,
-      "gift": 470000,
+      "gift": 400000,
       "secret": 220000,
-      "extraSetTop": 30000
-     },
-     {
-      "code": "LG1G-GP",
-      "speed": "1G",
-      "name": "LG 프리미엄안심(1G)+실속형(메인) 217채널+실속형(추가) 217채널+와이파이+클락",
-      "fee": 67100,
-      "bundleFee": 53900,
-      "gift": 470000,
-      "secret": 230000,
-      "extraSetTop": 30000
-     },
-     {
-      "code": "LG1G-GQ",
-      "speed": "1G",
-      "name": "LG 프리미엄안심(1G)+기본형(메인) 223채널+실속형(추가) 217채널+와이파이+클락",
-      "fee": 68200,
-      "bundleFee": 55000,
-      "gift": 470000,
-      "secret": 230000,
-      "extraSetTop": 30000
-     },
-     {
-      "code": "LG1G-GR",
-      "speed": "1G",
-      "name": "LG 프리미엄안심(1G)+프리미엄(메인) 252채널+실속형(추가) 217채널+와이파이+클락",
-      "fee": 70400,
-      "bundleFee": 57200,
-      "gift": 470000,
-      "secret": 250000,
       "extraSetTop": 30000
      }
     ],
@@ -1140,8 +1039,8 @@ window.RATE_DATA = {
       "name": "LG 와이파이광랜(100M)+실속형(메인) 217채널+실속형(추가) 217채널+실속형(추가) 217채널+와이파이",
       "fee": 63800,
       "bundleFee": 58300,
-      "gift": 400000,
-      "secret": 150000,
+      "gift": 300000,
+      "secret": 180000,
       "extraSetTop": 60000
      },
      {
@@ -1150,8 +1049,8 @@ window.RATE_DATA = {
       "name": "LG 와이파이광랜(100M)+기본형(메인) 223채널+실속형(추가) 217채널+실속형(추가) 217채널+와이파이",
       "fee": 64900,
       "bundleFee": 59400,
-      "gift": 400000,
-      "secret": 150000,
+      "gift": 300000,
+      "secret": 180000,
       "extraSetTop": 60000
      },
      {
@@ -1160,38 +1059,8 @@ window.RATE_DATA = {
       "name": "LG 와이파이광랜(100M)+프리미엄(메인) 252채널+실속형(추가) 217채널+실속형(추가) 217채널+와이파이",
       "fee": 67100,
       "bundleFee": 61600,
-      "gift": 400000,
-      "secret": 150000,
-      "extraSetTop": 60000
-     },
-     {
-      "code": "LG100-GD-4",
-      "speed": "100M",
-      "name": "LG 프리미엄안심(100M)+실속형(메인) 217채널+실속형(추가) 217채널+실속형(추가) 217채널+와이파이+클락",
-      "fee": 67100,
-      "bundleFee": 61600,
-      "gift": 400000,
-      "secret": 160000,
-      "extraSetTop": 60000
-     },
-     {
-      "code": "LG100-GE-5",
-      "speed": "100M",
-      "name": "LG 프리미엄안심(100M)+기본형(메인) 223채널+실속형(추가) 217채널+실속형(추가) 217채널+와이파이+클락",
-      "fee": 68200,
-      "bundleFee": 62700,
-      "gift": 400000,
-      "secret": 160000,
-      "extraSetTop": 60000
-     },
-     {
-      "code": "LG100-GF-6",
-      "speed": "100M",
-      "name": "LG 프리미엄안심(100M)+프리미엄(메인) 252채널+실속형(추가) 217채널+실속형(추가) 217채널+와이파이+클락",
-      "fee": 70400,
-      "bundleFee": 64900,
-      "gift": 400000,
-      "secret": 160000,
+      "gift": 300000,
+      "secret": 180000,
       "extraSetTop": 60000
      },
      {
@@ -1200,7 +1069,7 @@ window.RATE_DATA = {
       "name": "LG 와이파이기가슬림(500M)+실속형(메인) 217채널+실속형(추가) 217채널+실속형(추가) 217채널+와이파이",
       "fee": 69300,
       "bundleFee": 59400,
-      "gift": 470000,
+      "gift": 400000,
       "secret": 170000,
       "extraSetTop": 60000
      },
@@ -1210,7 +1079,7 @@ window.RATE_DATA = {
       "name": "LG 와이파이기가슬림(500M)+기본형(메인) 223채널+실속형(추가) 217채널+실속형(추가) 217채널+와이파이",
       "fee": 70400,
       "bundleFee": 60500,
-      "gift": 470000,
+      "gift": 400000,
       "secret": 170000,
       "extraSetTop": 60000
      },
@@ -1220,38 +1089,8 @@ window.RATE_DATA = {
       "name": "LG 와이파이기가슬림(500M)+프리미엄(메인) 252채널+실속형(추가) 217채널+실속형(추가) 217채널+와이파이",
       "fee": 72600,
       "bundleFee": 62700,
-      "gift": 470000,
+      "gift": 400000,
       "secret": 170000,
-      "extraSetTop": 60000
-     },
-     {
-      "code": "LG500-GJ-10",
-      "speed": "500M",
-      "name": "LG 프리미엄안심(500M)+실속형(메인) 217채널+실속형(추가) 217채널+실속형(추가) 217채널+와이파이+클락",
-      "fee": 73700,
-      "bundleFee": 63800,
-      "gift": 470000,
-      "secret": 180000,
-      "extraSetTop": 60000
-     },
-     {
-      "code": "LG500-GK-11",
-      "speed": "500M",
-      "name": "LG 프리미엄안심(500M)+기본형(메인) 223채널+실속형(추가) 217채널+실속형(추가) 217채널+와이파이+클락",
-      "fee": 74800,
-      "bundleFee": 64900,
-      "gift": 470000,
-      "secret": 180000,
-      "extraSetTop": 60000
-     },
-     {
-      "code": "LG500-GL-12",
-      "speed": "500M",
-      "name": "LG 프리미엄안심(500M)+프리미엄(메인) 252채널+실속형(추가) 217채널+실속형(추가) 217채널+와이파이+클락",
-      "fee": 77000,
-      "bundleFee": 67100,
-      "gift": 470000,
-      "secret": 250000,
       "extraSetTop": 60000
      },
      {
@@ -1260,7 +1099,7 @@ window.RATE_DATA = {
       "name": "LG 와이파이기가안심(1G)+실속형(메인) 217채널+실속형(추가) 217채널+실속형(추가) 217채널+와이파이",
       "fee": 74800,
       "bundleFee": 61600,
-      "gift": 470000,
+      "gift": 400000,
       "secret": 220000,
       "extraSetTop": 60000
      },
@@ -1270,7 +1109,7 @@ window.RATE_DATA = {
       "name": "LG 와이파이기가안심(1G)+기본형(메인) 223채널+실속형(추가) 217채널+실속형(추가) 217채널+와이파이",
       "fee": 75900,
       "bundleFee": 62700,
-      "gift": 470000,
+      "gift": 400000,
       "secret": 220000,
       "extraSetTop": 60000
      },
@@ -1280,38 +1119,8 @@ window.RATE_DATA = {
       "name": "LG 와이파이기가안심(1G)+프리미엄(메인) 252채널+실속형(추가) 217채널+실속형(추가) 217채널+와이파이",
       "fee": 78100,
       "bundleFee": 64900,
-      "gift": 470000,
+      "gift": 400000,
       "secret": 220000,
-      "extraSetTop": 60000
-     },
-     {
-      "code": "LG1G-GP-16",
-      "speed": "1G",
-      "name": "LG 프리미엄안심(1G)+실속형(메인) 217채널+실속형(추가) 217채널+실속형(추가) 217채널+와이파이+클락",
-      "fee": 79200,
-      "bundleFee": 66000,
-      "gift": 470000,
-      "secret": 230000,
-      "extraSetTop": 60000
-     },
-     {
-      "code": "LG1G-GQ-17",
-      "speed": "1G",
-      "name": "LG 프리미엄안심(1G)+기본형(메인) 223채널+실속형(추가) 217채널+실속형(추가) 217채널+와이파이+클락",
-      "fee": 80300,
-      "bundleFee": 67100,
-      "gift": 470000,
-      "secret": 230000,
-      "extraSetTop": 60000
-     },
-     {
-      "code": "LG1G-GR-18",
-      "speed": "1G",
-      "name": "LG 프리미엄안심(1G)+프리미엄(메인) 252채널+실속형(추가) 217채널+실속형(추가) 217채널+와이파이+클락",
-      "fee": 82500,
-      "bundleFee": 69300,
-      "gift": 470000,
-      "secret": 250000,
       "extraSetTop": 60000
      }
     ]
@@ -1337,7 +1146,7 @@ window.RATE_DATA = {
       "fee": 37560,
       "bundleFee": 32258,
       "gift": 300000,
-      "secret": 250000,
+      "secret": 200000,
       "extraSetTop": 0
      },
      {
@@ -1347,7 +1156,7 @@ window.RATE_DATA = {
       "fee": 39760,
       "bundleFee": 34458,
       "gift": 300000,
-      "secret": 300000,
+      "secret": 250000,
       "extraSetTop": 0
      },
      {
@@ -1357,7 +1166,7 @@ window.RATE_DATA = {
       "fee": 39760,
       "bundleFee": 34458,
       "gift": 300000,
-      "secret": 300000,
+      "secret": 250000,
       "extraSetTop": 0
      },
      {
@@ -1367,7 +1176,7 @@ window.RATE_DATA = {
       "fee": 41960,
       "bundleFee": 36658,
       "gift": 300000,
-      "secret": 310000,
+      "secret": 260000,
       "extraSetTop": 0
      },
      {
@@ -1377,7 +1186,7 @@ window.RATE_DATA = {
       "fee": 40590,
       "bundleFee": 34518,
       "gift": 350000,
-      "secret": 300000,
+      "secret": 250000,
       "extraSetTop": 0
      },
      {
@@ -1387,7 +1196,7 @@ window.RATE_DATA = {
       "fee": 42790,
       "bundleFee": 36718,
       "gift": 350000,
-      "secret": 350000,
+      "secret": 300000,
       "extraSetTop": 0
      },
      {
@@ -1397,7 +1206,7 @@ window.RATE_DATA = {
       "fee": 42790,
       "bundleFee": 36718,
       "gift": 350000,
-      "secret": 350000,
+      "secret": 300000,
       "extraSetTop": 0
      },
      {
@@ -1407,7 +1216,7 @@ window.RATE_DATA = {
       "fee": 44990,
       "bundleFee": 38918,
       "gift": 350000,
-      "secret": 360000,
+      "secret": 310000,
       "extraSetTop": 0
      },
      {
@@ -1417,7 +1226,7 @@ window.RATE_DATA = {
       "fee": 41800,
       "bundleFee": 35420,
       "gift": 400000,
-      "secret": 300000,
+      "secret": 250000,
       "extraSetTop": 0
      },
      {
@@ -1427,7 +1236,7 @@ window.RATE_DATA = {
       "fee": 44000,
       "bundleFee": 37620,
       "gift": 400000,
-      "secret": 350000,
+      "secret": 300000,
       "extraSetTop": 0
      },
      {
@@ -1437,7 +1246,7 @@ window.RATE_DATA = {
       "fee": 44000,
       "bundleFee": 37620,
       "gift": 400000,
-      "secret": 350000,
+      "secret": 300000,
       "extraSetTop": 0
      },
      {
@@ -1445,11 +1254,10 @@ window.RATE_DATA = {
       "speed": "1G",
       "name": "LG 헬로비전 플래티넘(1G)+PRO맥스(UHD) 249채널+와이파이",
       "fee": 46200,
-      "bundleFee": 38720,
+      "bundleFee": 39820,
       "gift": 400000,
-      "secret": 360000,
-      "extraSetTop": 0,
-      "check": "결합할인액이 같은 속도 다른 상품과 다름(7,480원)"
+      "secret": 310000,
+      "extraSetTop": 0
      }
     ],
     "2": [
@@ -1458,9 +1266,9 @@ window.RATE_DATA = {
       "speed": "160M",
       "name": "LG 헬로비전 광랜(160M)+이코노미(메인) 108채널+이코노미(추가) 108채널+와이파이",
       "fee": 46910,
-      "bundleFee": 41828,
+      "bundleFee": 41608,
       "gift": 300000,
-      "secret": 250000,
+      "secret": 200000,
       "extraSetTop": 30000
      },
      {
@@ -1468,9 +1276,9 @@ window.RATE_DATA = {
       "speed": "160M",
       "name": "LG 헬로비전 광랜(160M)+뉴베이직(메인) 247채널+이코노미(추가) 108채널+와이파이",
       "fee": 49110,
-      "bundleFee": 44028,
+      "bundleFee": 43808,
       "gift": 300000,
-      "secret": 300000,
+      "secret": 250000,
       "extraSetTop": 30000
      },
      {
@@ -1478,9 +1286,9 @@ window.RATE_DATA = {
       "speed": "160M",
       "name": "LG 헬로비전 광랜(160M)+PRO라이트(메인) 222채널+이코노미(추가) 108채널+와이파이",
       "fee": 49110,
-      "bundleFee": 44028,
+      "bundleFee": 43808,
       "gift": 300000,
-      "secret": 300000,
+      "secret": 250000,
       "extraSetTop": 30000
      },
      {
@@ -1488,9 +1296,9 @@ window.RATE_DATA = {
       "speed": "160M",
       "name": "LG 헬로비전 광랜(160M)+PRO맥스(메인) 249채널+이코노미(추가) 108채널+와이파이",
       "fee": 51310,
-      "bundleFee": 46228,
+      "bundleFee": 46008,
       "gift": 300000,
-      "secret": 310000,
+      "secret": 260000,
       "extraSetTop": 30000
      },
      {
@@ -1498,9 +1306,9 @@ window.RATE_DATA = {
       "speed": "500M",
       "name": "LG 헬로비전 기가라이트(500M)+이코노미(메인) 108채널+이코노미(추가) 108채널+와이파이",
       "fee": 49940,
-      "bundleFee": 44088,
+      "bundleFee": 43868,
       "gift": 350000,
-      "secret": 300000,
+      "secret": 250000,
       "extraSetTop": 30000
      },
      {
@@ -1508,9 +1316,9 @@ window.RATE_DATA = {
       "speed": "500M",
       "name": "LG 헬로비전 기가라이트(500M)+뉴베이직(메인) 247채널+이코노미(추가) 108채널+와이파이",
       "fee": 52140,
-      "bundleFee": 46288,
+      "bundleFee": 46068,
       "gift": 350000,
-      "secret": 350000,
+      "secret": 300000,
       "extraSetTop": 30000
      },
      {
@@ -1518,9 +1326,9 @@ window.RATE_DATA = {
       "speed": "500M",
       "name": "LG 헬로비전 기가라이트(500M)+PRO라이트(메인) 222채널+이코노미(추가) 108채널+와이파이",
       "fee": 52140,
-      "bundleFee": 46288,
+      "bundleFee": 46068,
       "gift": 350000,
-      "secret": 350000,
+      "secret": 300000,
       "extraSetTop": 30000
      },
      {
@@ -1530,18 +1338,17 @@ window.RATE_DATA = {
       "fee": 54340,
       "bundleFee": 48268,
       "gift": 350000,
-      "secret": 360000,
-      "extraSetTop": 30000,
-      "check": "결합할인액이 같은 속도 다른 상품과 다름(6,072원)"
+      "secret": 310000,
+      "extraSetTop": 30000
      },
      {
       "code": "HV1G-HM",
       "speed": "1G",
       "name": "LG 헬로비전 플래티넘(1G)+이코노미(메인) 108채널+이코노미(추가) 108채널+와이파이",
       "fee": 51150,
-      "bundleFee": 44990,
+      "bundleFee": 44770,
       "gift": 400000,
-      "secret": 300000,
+      "secret": 250000,
       "extraSetTop": 30000
      },
      {
@@ -1549,9 +1356,9 @@ window.RATE_DATA = {
       "speed": "1G",
       "name": "LG 헬로비전 플래티넘(1G)+뉴베이직(메인) 247채널+이코노미(추가) 108채널+와이파이",
       "fee": 53350,
-      "bundleFee": 47190,
+      "bundleFee": 46970,
       "gift": 400000,
-      "secret": 350000,
+      "secret": 300000,
       "extraSetTop": 30000
      },
      {
@@ -1559,9 +1366,9 @@ window.RATE_DATA = {
       "speed": "1G",
       "name": "LG 헬로비전 플래티넘(1G)+PRO라이트(메인) 222채널+이코노미(추가) 108채널+와이파이",
       "fee": 53350,
-      "bundleFee": 47190,
+      "bundleFee": 46970,
       "gift": 400000,
-      "secret": 350000,
+      "secret": 300000,
       "extraSetTop": 30000
      },
      {
@@ -1571,9 +1378,8 @@ window.RATE_DATA = {
       "fee": 55550,
       "bundleFee": 49170,
       "gift": 400000,
-      "secret": 360000,
-      "extraSetTop": 30000,
-      "check": "결합할인액이 같은 속도 다른 상품과 다름(6,380원)"
+      "secret": 310000,
+      "extraSetTop": 30000
      }
     ],
     "3": [
@@ -1582,9 +1388,9 @@ window.RATE_DATA = {
       "speed": "160M",
       "name": "LG 헬로비전 광랜(160M)+이코노미(메인) 108채널+이코노미(추가) 108채널+이코노미(추가) 108채널+와이파이",
       "fee": 56260,
-      "bundleFee": 51178,
+      "bundleFee": 50958,
       "gift": 300000,
-      "secret": 250000,
+      "secret": 200000,
       "extraSetTop": 60000
      },
      {
@@ -1592,9 +1398,9 @@ window.RATE_DATA = {
       "speed": "160M",
       "name": "LG 헬로비전 광랜(160M)+뉴베이직(메인) 247채널+이코노미(추가) 108채널+이코노미(추가) 108채널+와이파이",
       "fee": 58460,
-      "bundleFee": 53378,
+      "bundleFee": 53158,
       "gift": 300000,
-      "secret": 300000,
+      "secret": 250000,
       "extraSetTop": 60000
      },
      {
@@ -1602,9 +1408,9 @@ window.RATE_DATA = {
       "speed": "160M",
       "name": "LG 헬로비전 광랜(160M)+PRO라이트(메인) 222채널+이코노미(추가) 108채널+이코노미(추가) 108채널+와이파이",
       "fee": 58460,
-      "bundleFee": 53378,
+      "bundleFee": 53158,
       "gift": 300000,
-      "secret": 300000,
+      "secret": 250000,
       "extraSetTop": 60000
      },
      {
@@ -1612,9 +1418,9 @@ window.RATE_DATA = {
       "speed": "160M",
       "name": "LG 헬로비전 광랜(160M)+PRO맥스(메인) 249채널+이코노미(추가) 108채널+이코노미(추가) 108채널+와이파이",
       "fee": 60660,
-      "bundleFee": 55578,
+      "bundleFee": 55358,
       "gift": 300000,
-      "secret": 310000,
+      "secret": 260000,
       "extraSetTop": 60000
      },
      {
@@ -1624,7 +1430,7 @@ window.RATE_DATA = {
       "fee": 59290,
       "bundleFee": 53218,
       "gift": 350000,
-      "secret": 300000,
+      "secret": 250000,
       "extraSetTop": 60000,
       "check": "상품명에 TV가 2대분만 표기됨"
      },
@@ -1635,7 +1441,7 @@ window.RATE_DATA = {
       "fee": 61490,
       "bundleFee": 55418,
       "gift": 350000,
-      "secret": 350000,
+      "secret": 300000,
       "extraSetTop": 60000
      },
      {
@@ -1645,7 +1451,7 @@ window.RATE_DATA = {
       "fee": 61490,
       "bundleFee": 55418,
       "gift": 350000,
-      "secret": 350000,
+      "secret": 300000,
       "extraSetTop": 60000
      },
      {
@@ -1655,7 +1461,7 @@ window.RATE_DATA = {
       "fee": 63690,
       "bundleFee": 57618,
       "gift": 350000,
-      "secret": 360000,
+      "secret": 310000,
       "extraSetTop": 60000
      },
      {
@@ -1665,7 +1471,7 @@ window.RATE_DATA = {
       "fee": 60500,
       "bundleFee": 54120,
       "gift": 400000,
-      "secret": 300000,
+      "secret": 250000,
       "extraSetTop": 60000
      },
      {
@@ -1675,7 +1481,7 @@ window.RATE_DATA = {
       "fee": 62700,
       "bundleFee": 56320,
       "gift": 400000,
-      "secret": 350000,
+      "secret": 300000,
       "extraSetTop": 60000
      },
      {
@@ -1685,7 +1491,7 @@ window.RATE_DATA = {
       "fee": 62700,
       "bundleFee": 56320,
       "gift": 400000,
-      "secret": 350000,
+      "secret": 300000,
       "extraSetTop": 60000
      },
      {
@@ -1695,7 +1501,7 @@ window.RATE_DATA = {
       "fee": 64900,
       "bundleFee": 58520,
       "gift": 400000,
-      "secret": 360000,
+      "secret": 310000,
       "extraSetTop": 60000
      }
     ]
@@ -1761,8 +1567,8 @@ window.RATE_DATA = {
       "name": "스카이안심(100M)+베이직(지니A) 194채널+와이파이",
       "fee": 35200,
       "bundleFee": null,
-      "gift": 350000,
-      "secret": 80000,
+      "gift": 260000,
+      "secret": 170000,
       "extraSetTop": 0
      },
      {
@@ -1771,8 +1577,8 @@ window.RATE_DATA = {
       "name": "스카이안심(100M)+플러스(지니A) 209채널+와이파이",
       "fee": 36300,
       "bundleFee": null,
-      "gift": 350000,
-      "secret": 80000,
+      "gift": 260000,
+      "secret": 170000,
       "extraSetTop": 0
      },
      {
@@ -1781,8 +1587,8 @@ window.RATE_DATA = {
       "name": "스카이안심(100M)+초이스(지니A) 209채널+와이파이",
       "fee": 45100,
       "bundleFee": null,
-      "gift": 350000,
-      "secret": 150000,
+      "gift": 260000,
+      "secret": 240000,
       "extraSetTop": 0
      },
      {
@@ -1791,8 +1597,8 @@ window.RATE_DATA = {
       "name": "스카이안심(200M)+베이직(지니A) 194채널+와이파이",
       "fee": 36300,
       "bundleFee": null,
-      "gift": 360000,
-      "secret": 150000,
+      "gift": 260000,
+      "secret": 250000,
       "extraSetTop": 0
      },
      {
@@ -1801,8 +1607,8 @@ window.RATE_DATA = {
       "name": "스카이안심(200M)+플러스(지니A) 209채널+와이파이",
       "fee": 37400,
       "bundleFee": null,
-      "gift": 360000,
-      "secret": 150000,
+      "gift": 260000,
+      "secret": 250000,
       "extraSetTop": 0
      },
      {
@@ -1811,8 +1617,8 @@ window.RATE_DATA = {
       "name": "스카이안심(200M)+초이스(지니A) 209채널+와이파이",
       "fee": 46200,
       "bundleFee": null,
-      "gift": 360000,
-      "secret": 220000,
+      "gift": 260000,
+      "secret": 320000,
       "extraSetTop": 0
      },
      {
@@ -1821,8 +1627,8 @@ window.RATE_DATA = {
       "name": "스카이안심(500M)+베이직(지니A) 194채널+와이파이",
       "fee": 41800,
       "bundleFee": null,
-      "gift": 420000,
-      "secret": 160000,
+      "gift": 370000,
+      "secret": 210000,
       "extraSetTop": 0
      },
      {
@@ -1831,8 +1637,8 @@ window.RATE_DATA = {
       "name": "스카이안심(500M)+플러스(지니A) 209채널+와이파이",
       "fee": 42900,
       "bundleFee": null,
-      "gift": 420000,
-      "secret": 160000,
+      "gift": 370000,
+      "secret": 210000,
       "extraSetTop": 0
      },
      {
@@ -1841,8 +1647,8 @@ window.RATE_DATA = {
       "name": "스카이안심(500M)+초이스(지니A) 209채널+와이파이",
       "fee": 51700,
       "bundleFee": null,
-      "gift": 420000,
-      "secret": 230000,
+      "gift": 370000,
+      "secret": 280000,
       "extraSetTop": 0
      },
      {
@@ -1851,8 +1657,8 @@ window.RATE_DATA = {
       "name": "스카이안심(1G)+베이직(지니A) 194채널+와이파이",
       "fee": 47300,
       "bundleFee": null,
-      "gift": 450000,
-      "secret": 150000,
+      "gift": 400000,
+      "secret": 200000,
       "extraSetTop": 0
      },
      {
@@ -1861,8 +1667,8 @@ window.RATE_DATA = {
       "name": "스카이안심(1G)+플러스(지니A) 209채널+와이파이",
       "fee": 48400,
       "bundleFee": null,
-      "gift": 450000,
-      "secret": 150000,
+      "gift": 400000,
+      "secret": 200000,
       "extraSetTop": 0
      },
      {
@@ -1871,8 +1677,8 @@ window.RATE_DATA = {
       "name": "스카이안심(1G)+초이스(지니A) 209채널+와이파이",
       "fee": 57200,
       "bundleFee": null,
-      "gift": 450000,
-      "secret": 220000,
+      "gift": 400000,
+      "secret": 270000,
       "extraSetTop": 0
      }
     ],
@@ -1883,8 +1689,8 @@ window.RATE_DATA = {
       "name": "스카이안심(100M)+베이직(메인) 194채널+베이직(추가) 194채널+와이파이",
       "fee": 44550,
       "bundleFee": null,
-      "gift": 350000,
-      "secret": 80000,
+      "gift": 260000,
+      "secret": 170000,
       "extraSetTop": 30000
      },
      {
@@ -1893,8 +1699,8 @@ window.RATE_DATA = {
       "name": "스카이안심(100M)+플러스(메인) 209채널+베이직(추가) 194채널+와이파이",
       "fee": 45650,
       "bundleFee": null,
-      "gift": 350000,
-      "secret": 80000,
+      "gift": 260000,
+      "secret": 170000,
       "extraSetTop": 30000
      },
      {
@@ -1903,8 +1709,8 @@ window.RATE_DATA = {
       "name": "스카이안심(100M)+초이스(메인) 209채널+베이직(추가) 194채널+와이파이",
       "fee": 54450,
       "bundleFee": null,
-      "gift": 350000,
-      "secret": 150000,
+      "gift": 260000,
+      "secret": 240000,
       "extraSetTop": 30000
      },
      {
@@ -1913,8 +1719,8 @@ window.RATE_DATA = {
       "name": "스카이안심(200M)+베이직(메인) 194채널+베이직(추가) 194채널+와이파이",
       "fee": 45650,
       "bundleFee": null,
-      "gift": 360000,
-      "secret": 150000,
+      "gift": 260000,
+      "secret": 250000,
       "extraSetTop": 30000
      },
      {
@@ -1923,8 +1729,8 @@ window.RATE_DATA = {
       "name": "스카이안심(200M)+플러스(메인) 209채널+베이직(추가) 194채널+와이파이",
       "fee": 46750,
       "bundleFee": null,
-      "gift": 360000,
-      "secret": 150000,
+      "gift": 260000,
+      "secret": 250000,
       "extraSetTop": 30000
      },
      {
@@ -1933,8 +1739,8 @@ window.RATE_DATA = {
       "name": "스카이안심(200M)+초이스(메인) 209채널+베이직(추가) 194채널+와이파이",
       "fee": 55550,
       "bundleFee": null,
-      "gift": 360000,
-      "secret": 220000,
+      "gift": 260000,
+      "secret": 320000,
       "extraSetTop": 30000
      },
      {
@@ -1943,8 +1749,8 @@ window.RATE_DATA = {
       "name": "스카이안심(500M)+베이직(메인) 194채널+베이직(추가) 194채널+와이파이",
       "fee": 51150,
       "bundleFee": null,
-      "gift": 420000,
-      "secret": 160000,
+      "gift": 370000,
+      "secret": 210000,
       "extraSetTop": 30000
      },
      {
@@ -1953,8 +1759,8 @@ window.RATE_DATA = {
       "name": "스카이안심(500M)+플러스(메인) 209채널+베이직(추가) 194채널+와이파이",
       "fee": 52250,
       "bundleFee": null,
-      "gift": 420000,
-      "secret": 160000,
+      "gift": 370000,
+      "secret": 210000,
       "extraSetTop": 30000
      },
      {
@@ -1963,8 +1769,8 @@ window.RATE_DATA = {
       "name": "스카이안심(500M)+초이스(메인) 209채널+베이직(추가) 194채널+와이파이",
       "fee": 61050,
       "bundleFee": null,
-      "gift": 420000,
-      "secret": 230000,
+      "gift": 370000,
+      "secret": 280000,
       "extraSetTop": 30000
      },
      {
@@ -1973,8 +1779,8 @@ window.RATE_DATA = {
       "name": "스카이안심(1G)+베이직(메인) 194채널+베이직(추가) 194채널+와이파이",
       "fee": 56650,
       "bundleFee": null,
-      "gift": 450000,
-      "secret": 150000,
+      "gift": 400000,
+      "secret": 200000,
       "extraSetTop": 30000
      },
      {
@@ -1983,8 +1789,8 @@ window.RATE_DATA = {
       "name": "스카이안심(1G)+플러스(메인) 209채널+베이직(추가) 194채널+와이파이",
       "fee": 57750,
       "bundleFee": null,
-      "gift": 450000,
-      "secret": 150000,
+      "gift": 400000,
+      "secret": 200000,
       "extraSetTop": 30000
      },
      {
@@ -1993,8 +1799,8 @@ window.RATE_DATA = {
       "name": "스카이안심(1G)+초이스(메인) 209채널+베이직(추가) 194채널+와이파이",
       "fee": 66550,
       "bundleFee": null,
-      "gift": 450000,
-      "secret": 220000,
+      "gift": 400000,
+      "secret": 270000,
       "extraSetTop": 30000
      }
     ],
@@ -2005,8 +1811,8 @@ window.RATE_DATA = {
       "name": "스카이안심(100M)+베이직(메인) 194채널+베이직(추가) 194채널+베이직(추가)+와이파이",
       "fee": 53900,
       "bundleFee": null,
-      "gift": 350000,
-      "secret": 80000,
+      "gift": 260000,
+      "secret": 170000,
       "extraSetTop": 60000
      },
      {
@@ -2015,8 +1821,8 @@ window.RATE_DATA = {
       "name": "스카이안심(100M)+플러스(메인) 209채널+베이직(추가) 194채널+베이직(추가)+와이파이",
       "fee": 55000,
       "bundleFee": null,
-      "gift": 350000,
-      "secret": 80000,
+      "gift": 260000,
+      "secret": 170000,
       "extraSetTop": 60000
      },
      {
@@ -2025,8 +1831,8 @@ window.RATE_DATA = {
       "name": "스카이안심(100M)+초이스(메인) 209채널+베이직(추가) 194채널+베이직(추가)+와이파이",
       "fee": 63800,
       "bundleFee": null,
-      "gift": 350000,
-      "secret": 150000,
+      "gift": 260000,
+      "secret": 240000,
       "extraSetTop": 60000
      },
      {
@@ -2035,8 +1841,8 @@ window.RATE_DATA = {
       "name": "스카이안심(200M)+베이직(메인) 194채널+베이직(추가) 194채널+베이직(추가)+와이파이",
       "fee": 55000,
       "bundleFee": null,
-      "gift": 360000,
-      "secret": 150000,
+      "gift": 260000,
+      "secret": 250000,
       "extraSetTop": 60000
      },
      {
@@ -2045,8 +1851,8 @@ window.RATE_DATA = {
       "name": "스카이안심(200M)+플러스(메인) 209채널+베이직(추가) 194채널+베이직(추가)+와이파이",
       "fee": 56100,
       "bundleFee": null,
-      "gift": 360000,
-      "secret": 150000,
+      "gift": 260000,
+      "secret": 250000,
       "extraSetTop": 60000
      },
      {
@@ -2055,8 +1861,8 @@ window.RATE_DATA = {
       "name": "스카이안심(200M)+초이스(메인) 209채널+베이직(추가) 194채널+베이직(추가)+와이파이",
       "fee": 64900,
       "bundleFee": null,
-      "gift": 360000,
-      "secret": 220000,
+      "gift": 260000,
+      "secret": 320000,
       "extraSetTop": 60000
      },
      {
@@ -2065,8 +1871,8 @@ window.RATE_DATA = {
       "name": "스카이안심(500M)+베이직(메인) 194채널+베이직(추가) 194채널+베이직(추가)+와이파이",
       "fee": 60500,
       "bundleFee": null,
-      "gift": 420000,
-      "secret": 160000,
+      "gift": 370000,
+      "secret": 210000,
       "extraSetTop": 60000
      },
      {
@@ -2075,8 +1881,8 @@ window.RATE_DATA = {
       "name": "스카이안심(500M)+플러스(메인) 209채널+베이직(추가) 194채널+베이직(추가)+와이파이",
       "fee": 61600,
       "bundleFee": null,
-      "gift": 420000,
-      "secret": 160000,
+      "gift": 370000,
+      "secret": 210000,
       "extraSetTop": 60000
      },
      {
@@ -2085,8 +1891,8 @@ window.RATE_DATA = {
       "name": "스카이안심(500M)+초이스(메인) 209채널+베이직(추가) 194채널+베이직(추가)+와이파이",
       "fee": 70400,
       "bundleFee": null,
-      "gift": 420000,
-      "secret": 230000,
+      "gift": 370000,
+      "secret": 280000,
       "extraSetTop": 60000
      },
      {
@@ -2095,8 +1901,8 @@ window.RATE_DATA = {
       "name": "스카이안심(1G)+베이직(메인) 194채널+베이직(추가) 194채널+베이직(추가)+와이파이",
       "fee": 66000,
       "bundleFee": null,
-      "gift": 450000,
-      "secret": 150000,
+      "gift": 400000,
+      "secret": 200000,
       "extraSetTop": 60000
      },
      {
@@ -2105,8 +1911,8 @@ window.RATE_DATA = {
       "name": "스카이안심(1G)+플러스(메인) 209채널+베이직(추가) 194채널+베이직(추가)+와이파이",
       "fee": 67100,
       "bundleFee": null,
-      "gift": 450000,
-      "secret": 150000,
+      "gift": 400000,
+      "secret": 200000,
       "extraSetTop": 60000
      },
      {
@@ -2115,8 +1921,8 @@ window.RATE_DATA = {
       "name": "스카이안심(1G)+초이스(메인) 209채널+베이직(추가) 194채널+베이직(추가)+와이파이",
       "fee": 75900,
       "bundleFee": null,
-      "gift": 450000,
-      "secret": 220000,
+      "gift": 400000,
+      "secret": 270000,
       "extraSetTop": 60000
      }
     ]
@@ -2534,8 +2340,8 @@ window.RATE_DATA = {
    "name": "데이터플랜 MAX",
    "data": "무제한",
    "fee": 85000,
-   "gift100": 300000,
-   "gift500": 300000
+   "gift100": 270000,
+   "gift500": 270000
   },
   {
    "code": "USIM-SK-P01",
